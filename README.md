@@ -1,6 +1,6 @@
 # beta.tahm-ken.ch
 
-The maybe futur tahm-ken.ch website.
+The maybe future tahm-ken.ch website.
 
 I'm leaning Svelte.
 
