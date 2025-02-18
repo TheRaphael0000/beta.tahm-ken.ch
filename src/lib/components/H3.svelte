@@ -3,6 +3,6 @@
 	let { children, class: propClasses = '', ...props } = $props();
 </script>
 
-<article {...props} class={['m-auto', 'xl:w-6xl', propClasses]}>
+<h1 {...props} class={['text-xl', propClasses]}>
 	{@render children()}
-</article>
+</h1>

@@ -20,8 +20,8 @@
 			text: 'Multisearch'
 		},
 		{
-			href: '/communities',
-			text: 'Communities'
+			href: '/community',
+			text: 'Community'
 		},
 		{
 			href: '/faq',
@@ -68,7 +68,7 @@
 	</nav>
 </header>
 
-<main class="p-6">
+<main class="px-6">
 	{@render children()}
 </main>
 

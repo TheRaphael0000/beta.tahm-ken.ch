@@ -6,7 +6,14 @@
 
 <button
 	{...props}
-	class={[inputClass, 'transition-all', 'hover:bg-white', 'hover:text-black', propClasses]}
+	class={[
+		inputClass,
+		'transition-all',
+		'hover:bg-white',
+		'hover:text-black',
+		'text-nowrap',
+		propClasses
+	]}
 >
 	{@render children()}
 </button>
