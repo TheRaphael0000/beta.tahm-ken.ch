@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import quotes from '../data/quotes.json';
+	import quotes from 'data/quotes.json';
 	import { page } from '$app/state';
 
 	let currentPath = $derived(page.url.pathname);
@@ -58,7 +58,7 @@
 	<div class="bg_img"></div>
 	<nav class="flex flex-wrap">
 		<a class="px-4 py-2" href="/" aria-label="home">
-			<img src="img/favicon.png" alt="logo" class="h-10" />
+			<img src="/img/favicon.png" alt="logo" class="h-10" />
 		</a>
 		{#each headerNav as link}
 			<a class="my-2 px-4 py-2" class:border-b-1={currentPath === link.href} href={link.href}
@@ -99,7 +99,7 @@
 
 <style>
 	.bg_img {
-		background-image: url('img/tahm_kench/TahmKench_30.jpg');
+		background-image: url('/img/tahm_kench/TahmKench_30.jpg');
 		position: fixed;
 		background-position: center;
 		background-size: cover;

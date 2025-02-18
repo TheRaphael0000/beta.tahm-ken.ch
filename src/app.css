@@ -4,3 +4,17 @@ html {
 	background-color: rgb(10, 10, 10);
 	color: white;
 }
+
+p {
+	margin: 10px 0px;
+}
+
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
+	outline-color: white;
+	outline-style: solid;
+	outline-width: 1px;
+	outline-offset: 2px;
+}

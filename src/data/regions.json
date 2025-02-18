@@ -1,0 +1,174 @@
+[
+	{
+		"id": "BR1",
+		"name": "Brazil",
+		"abbreviation": "BR",
+		"country_codes": ["BR"]
+	},
+	{
+		"id": "EUN1",
+		"name": "Europe Nordic & East",
+		"abbreviation": "EUNE",
+		"country_codes": [
+			"NO",
+			"SE",
+			"FI",
+			"DK",
+			"EE",
+			"LV",
+			"LT",
+			"BY",
+			"UA",
+			"MD",
+			"RO",
+			"BG",
+			"GR",
+			"MK",
+			"AL",
+			"RS",
+			"ME",
+			"BA",
+			"HR",
+			"SK",
+			"SI",
+			"HU",
+			"CZ",
+			"PL"
+		]
+	},
+	{
+		"id": "EUW1",
+		"name": "Europe West",
+		"abbreviation": "EUW",
+		"country_codes": [
+			"IE",
+			"GB",
+			"FR",
+			"CH",
+			"BE",
+			"ES",
+			"PT",
+			"IT",
+			"AT",
+			"DE",
+			"NL",
+			"LU",
+			"LI",
+			"MC",
+			"AD"
+		]
+	},
+	{
+		"id": "LA1",
+		"name": "Latin America North",
+		"abbreviation": "LAN",
+		"country_codes": [
+			"PE",
+			"EC",
+			"CO",
+			"VE",
+			"PA",
+			"CR",
+			"NI",
+			"HN",
+			"SV",
+			"GT",
+			"BZ",
+			"MX",
+			"CU",
+			"BS",
+			"HT",
+			"DO",
+			"PR",
+			"VG",
+			"AI",
+			"VI",
+			"KN",
+			"AG",
+			"MS",
+			"GP",
+			"DM",
+			"MQ",
+			"LC",
+			"VC",
+			"BB",
+			"GD",
+			"TT",
+			"JM",
+			"TC",
+			"KY"
+		]
+	},
+	{
+		"id": "LA2",
+		"name": "Latin America South",
+		"abbreviation": "LAS",
+		"country_codes": ["AR", "CL", "BO", "PY", "UY"]
+	},
+	{
+		"id": "NA1",
+		"name": "North America",
+		"abbreviation": "NA",
+		"country_codes": ["CA", "US"]
+	},
+	{
+		"id": "OC1",
+		"name": "Oceania",
+		"abbreviation": "OCE",
+		"country_codes": ["AU", "NZ"]
+	},
+	{
+		"id": "PH2",
+		"name": "Philippines",
+		"abbreviation": "PH",
+		"country_codes": ["PH"]
+	},
+	{
+		"id": "RU1",
+		"name": "Russia",
+		"abbreviation": "RU",
+		"country_codes": ["RU"]
+	},
+	{
+		"id": "SG2",
+		"name": "Singapore",
+		"abbreviation": "SG",
+		"country_codes": ["SG"]
+	},
+	{
+		"id": "TH2",
+		"name": "Thailand",
+		"abbreviation": "TH",
+		"country_codes": ["TH"]
+	},
+	{
+		"id": "TR1",
+		"name": "Turkey",
+		"abbreviation": "TR",
+		"country_codes": ["TR"]
+	},
+	{
+		"id": "TW2",
+		"name": "Taiwan",
+		"abbreviation": "TW",
+		"country_codes": ["TW"]
+	},
+	{
+		"id": "JP1",
+		"name": "Japan",
+		"abbreviation": "JP",
+		"country_codes": ["JP"]
+	},
+	{
+		"id": "KR",
+		"name": "Republic of Korea",
+		"abbreviation": "KR",
+		"country_codes": ["KR"]
+	},
+	{
+		"id": "VN2",
+		"name": "Vietnam",
+		"abbreviation": "VN",
+		"country_codes": ["VN"]
+	}
+]
