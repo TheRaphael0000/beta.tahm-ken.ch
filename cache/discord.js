@@ -13,16 +13,13 @@ async function query(invite_id) {
 	return json;
 }
 
-async function main() {
+export default async function main() {
+	console.log('Caching discord...');
 	const cache = new Map();
 	for (const invite_id of communities) {
 		const community = await query(invite_id);
 		cache.set(invite_id, community);
 	}
-	console.log(cache)
-	const communities_string = JSON.stringify(Object.fromEntries(cache), null, 2)
-	console.log(communities_string)
+	const communities_string = JSON.stringify(Object.fromEntries(cache), null, 2);
 	writeFileSync('src/data/discord.cache.json', communities_string);
 }
-
-main();
