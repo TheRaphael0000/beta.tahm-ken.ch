@@ -5,4 +5,6 @@ export { default as H2 } from './H2.svelte';
 export { default as H3 } from './H3.svelte';
 export { default as InputText } from './InputText.svelte';
 export { default as Select } from './Select.svelte';
+export { default as Option } from './Option.svelte';
 export { default as TextArea } from './TextArea.svelte';
+export { default as A } from './A.svelte';

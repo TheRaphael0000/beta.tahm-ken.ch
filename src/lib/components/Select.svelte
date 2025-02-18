@@ -6,7 +6,7 @@
 
 <select
 	{...props}
-	class={[inputClass, 'transition-all', 'hover:bg-white', 'hover:text-black', propClasses]}
+	class={[inputClass, propClasses]}
 	bind:value
 >
 	{@render children()}

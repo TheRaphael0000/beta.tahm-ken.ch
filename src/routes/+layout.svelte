@@ -2,6 +2,7 @@
 	import '../app.css';
 	import quotes from 'data/quotes.json';
 	import { page } from '$app/state';
+	import { onMount } from 'svelte';
 
 	let currentPath = $derived(page.url.pathname);
 	let { children } = $props();
@@ -47,11 +48,14 @@
 		}
 	];
 
-	let quote = $state(quotes.at(Math.random() * quotes.length));
+	let quote: string = $state('');
 
-	setInterval(() => {
-		quote = quotes.at(Math.random() * quotes.length);
-	}, 10000);
+	function updateQuote() {
+		quote = quotes?.at(Math.random() * quotes.length) ?? '';
+	}
+
+	onMount(updateQuote);
+	setInterval(updateQuote, 10000);
 </script>
 
 <header>
