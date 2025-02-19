@@ -21,5 +21,5 @@ export default async function main() {
 		cache.set(invite_id, community);
 	}
 	const communities_string = JSON.stringify(Object.fromEntries(cache), null, 2);
-	writeFileSync('src/data/discord.cache.json', communities_string);
+	writeFileSync('src/data/cache/discord.cache.json', communities_string);
 }

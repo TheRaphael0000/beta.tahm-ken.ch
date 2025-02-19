@@ -2,7 +2,7 @@
 	import { H1, Article } from '$lib/components';
 	import Community from './Community.svelte';
 	import DiscordCommunity from './DiscordCommunity.svelte';
-	import discord_invites from 'data/discord.cache.json';
+	import discord_invites from 'data/cache/discord.cache.json';
 </script>
 
 <Article>
