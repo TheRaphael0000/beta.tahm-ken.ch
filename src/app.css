@@ -13,8 +13,8 @@ input:focus,
 button:focus,
 textarea:focus,
 select:focus {
-	outline-color: white;
-	outline-style: solid;
+	/* outline-color: white;
+	outline-style: solid; */
 	outline-width: 1px;
-	outline-offset: 2px;
+	outline-offset: 1px;
 }

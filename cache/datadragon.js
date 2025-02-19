@@ -2,7 +2,7 @@ import { writeFileSync, readFileSync } from 'fs';
 
 const endpoint = 'https://ddragon.leagueoflegends.com';
 const dataFolder = 'src/data/cache/';
-const staticFolder = 'static/cache/';
+const staticFolder = 'static/img/cache/';
 
 async function queryJson(pathname, filename) {
 	const url = `${endpoint}/${pathname}`;
@@ -18,7 +18,9 @@ async function queryBlob(pathname, filename) {
 	console.log(url);
 	const response = await fetch(url);
 	const blob = await response.blob();
-	writeFileSync(`${staticFolder}${filename}`, Buffer.from(new Uint8Array(blob)));
+	const arrayBuffer = await blob.arrayBuffer();
+	const buffer = Buffer.from(arrayBuffer);
+	writeFileSync(`${staticFolder}${filename}`, buffer);
 }
 
 export default async function main() {
