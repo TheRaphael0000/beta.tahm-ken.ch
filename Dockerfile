@@ -8,7 +8,7 @@ RUN npm i
 
 COPY . .
 
-# RUN node cache/cache.js
+RUN node cache/cache.js
 
 RUN npm run build
 
