@@ -19,7 +19,7 @@
 
 	function search() {
 		let cleanSummoners = summoners.replace('#', '-').replaceAll('\n', ',');
-		let url = `${page.url.pathname}/${region}/${cleanSummoners}`;
+		let url = `${page.url.pathname}?region=${region}&summoners=${cleanSummoners}`;
 		goto(url);
 	}
 </script>
