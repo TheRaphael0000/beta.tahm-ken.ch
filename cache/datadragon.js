@@ -36,7 +36,8 @@ export default async function main() {
 
 	console.log(`riot version: ${version}`);
 	console.log(`current downloaded version: ${currentVersions.at(0)}`);
-	// if (version == currentVersions.at(0)) return;
+	
+	if (version == currentVersions.at(0)) return;
 
 	const champions = await queryJson(
 		`cdn/${version}/data/en_US/champion.json`,
