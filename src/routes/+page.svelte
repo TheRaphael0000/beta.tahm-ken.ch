@@ -26,7 +26,31 @@
 	const championsMap = new Map(Object.entries(champions_json.data));
 	let champions = $state([...championsAll]);
 	const championsSelected: string[] = $state([]);
+	let challengesSelected: any[] = $state([]);
+	const championsKeyForSelectedChallenges = $derived(
+		getChampions(challengesSelected).map((c) => c.key)
+	);
 	const canAdd = $derived(championsSelected.length < 5);
+
+	const championsOrdered = $derived(orderChampions(champions));
+
+	function orderChampions(champions: any) {
+		// order by name first
+		let order = champions.toSorted((a: any, b: any) => {
+			return a.name.localeCompare(b.name);
+		});
+
+		// then by selected challenges
+		if (championsKeyForSelectedChallenges.length > 0) {
+			order.sort((a: any, b: any) => {
+				const ai = championsKeyForSelectedChallenges.includes(a?.key) ? 1 : 0;
+				const bi = championsKeyForSelectedChallenges.includes(b?.key) ? 1 : 0;
+				return bi - ai;
+			});
+		}
+
+		return order;
+	}
 
 	function filter(event: any) {
 		const value = event.target.value as string;
@@ -53,8 +77,37 @@
 
 	function clear(event: any) {
 		championsSelected.splice(0, championsSelected.length);
+		challengesSelected = challengesSelected.filter(a => false);
 	}
 
+	function getChampions(challenges: any[]) {
+		const sets = [];
+		for (const challenge of challenges) {
+			sets.push(new Set<number>(challenge.availableIds));
+		}
+
+		const result: any[] = [...intersectSets(sets)]
+			.map((key: number) => championsAll.find((c) => c.key == key.toString()))
+			.filter((k: any) => k != undefined);
+
+		return result;
+	}
+
+	function intersectSets(sets: Set<any>[]) {
+		if (!sets || sets.length === 0) {
+			return new Set();
+		}
+
+		let intersection = new Set(sets[0]);
+
+		for (let i = 1; i < sets.length; i++) {
+			intersection = intersection.intersection(sets[i]);
+		}
+
+		return intersection;
+	}
+
+	$inspect(championsSelected, console.trace)
 	// document.addEventListener("keypress", console.log)
 </script>
 
@@ -124,12 +177,10 @@
 					</td>
 				</tr>
 				{#each group.challenges as challenge}
-					{@const championsId = challenge.availableIds.map((i) => i.toString())}
-					{@const championsSelectedChallenge = championsSelected
-						.filter((championKey) =>
-							championsId.includes(championsMap?.get(championKey)?.key ?? '')
-						)
-						.map((key) => championsMap.get(key))}
+					{@const championsChallenge = getChampions([challenge])}
+					{@const championsSelectedChallenge = championsChallenge.filter((champion: any) =>
+						championsSelected.includes(champion.id)
+					)}
 					{@const missingDots = getSize(challenge) - championsSelectedChallenge.length}
 					<tr>
 						<td class="px-2 pt-0.5 text-right"
@@ -137,11 +188,13 @@
 								type="checkbox"
 								id={`challenge_cb_${challenge.id}`}
 								class="cursor-pointer"
+								bind:group={challengesSelected}
+								value={challenge}
 							/></td
 						>
 						<td class="px-2 text-right">
 							<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer">
-								{challenge.availableIds.length}
+								{getChampions([...challengesSelected, challenge]).length}
 							</label>
 						</td>
 						<td class="px-2 text-left">
@@ -179,12 +232,14 @@
 
 	<div>
 		<div class="flex flex-wrap justify-center">
-			{#each champions as champion}
+			{#each championsOrdered as champion}
 				<button
 					class="m-1 ring-amber-400/75 transition-all duration-75"
 					class:ring-2={championsSelected.includes(champion.id)}
 					class:cursor-pointer={canAdd || championsSelected.includes(champion.id)}
 					onclick={(e) => championClick(e, champion.id)}
+					class:opacity-35={!championsKeyForSelectedChallenges.includes(champion.key) &&
+						championsKeyForSelectedChallenges.length != 0}
 				>
 					<img src={`/img/cache/${champion.image.full}`} alt={champion.name} class="w-16" />
 				</button>
