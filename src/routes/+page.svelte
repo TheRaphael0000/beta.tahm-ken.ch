@@ -77,7 +77,7 @@
 
 	function clear(event: any) {
 		championsSelected.splice(0, championsSelected.length);
-		challengesSelected = challengesSelected.filter(a => false);
+		challengesSelected = challengesSelected.filter((a) => false);
 	}
 
 	function getChampions(challenges: any[]) {
@@ -106,9 +106,6 @@
 
 		return intersection;
 	}
-
-	$inspect(championsSelected, console.trace)
-	// document.addEventListener("keypress", console.log)
 </script>
 
 <div class="flex flex-wrap justify-center">
@@ -181,8 +178,8 @@
 					{@const championsSelectedChallenge = championsChallenge.filter((champion: any) =>
 						championsSelected.includes(champion.id)
 					)}
-					{@const missingDots = getSize(challenge) - championsSelectedChallenge.length}
-					<tr>
+					{@const missingDots = Math.max(getSize(challenge) - championsSelectedChallenge.length, 0)}
+					<tr class:text-amber-300={missingDots <= 0}>
 						<td class="px-2 pt-0.5 text-right"
 							><input
 								type="checkbox"
@@ -193,7 +190,7 @@
 							/></td
 						>
 						<td class="px-2 text-right">
-							<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer">
+							<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer" style="width:30px; display inline-block;">
 								{getChampions([...challengesSelected, challenge]).length}
 							</label>
 						</td>
@@ -217,7 +214,7 @@
 										/>
 									</div>
 								{/each}
-								{#each Array.from(Array(missingDots).keys()) as i}
+								{#each Array(missingDots) as i}
 									<div class="mx-0.5 h-[20px] w-[20px] p-[5px]">
 										<div class="v-full h-full rounded-full bg-white/50"></div>
 									</div>
