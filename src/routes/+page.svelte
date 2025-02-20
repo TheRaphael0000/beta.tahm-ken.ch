@@ -66,49 +66,49 @@
 	}
 </script>
 
-<div class="flex flex-wrap justify-center">
-	<Button class="m-3" title="Show/Hide completed challenges">
-		<i class="fa-solid fa-fw fa-eye"></i>
-	</Button>
-	<InputText
-		class="m-3"
-		title="Search for champions, enter allows you to selected when only one champion matches the search"
-		placeholder="Search champion..."
-		oninput={filter}
-		onkeypress={filterKey}
-	/>
-	<Button
-		class="m-3"
-		title="Find compositions that satify the current selection (selected champions and challenges)."
-	>
-		<i class="fa-solid fa-wand-magic-sparkles"></i> Optimize selection
-	</Button>
-	<div class="mx-3 flex items-center">
-		{#each Array.from(Array(5).keys()) as i}
-			{@const championSelected = championsSelected.at(i) ?? ''}
-			{@const champion = championsMap.get(championSelected)}
+<div class="team_builder">
+	<div class="menu flex flex-wrap justify-center">
+		<Button class="m-3" title="Show/Hide completed challenges">
+			<i class="fa-solid fa-fw fa-eye"></i>
+		</Button>
+		<InputText
+			class="m-3"
+			title="Search for champions, enter allows you to selected when only one champion matches the search"
+			placeholder="Search champion..."
+			oninput={filter}
+			onkeypress={filterKey}
+		/>
+		<Button
+			class="m-3"
+			title="Find compositions that satify the current selection (selected champions and challenges)."
+		>
+			<i class="fa-solid fa-wand-magic-sparkles"></i> Optimize selection
+		</Button>
+		<div class="mx-3 flex items-center">
+			{#each Array.from(Array(5).keys()) as i}
+				{@const championSelected = championsSelected.at(i) ?? ''}
+				{@const champion = championsMap.get(championSelected)}
 
-			<div class={['m-1.5', 'h-11', 'w-11', champion == undefined ? 'p-[11px]' : '']}>
-				{#if champion == undefined}
-					<div class="v-full h-full rounded-full bg-white/50"></div>
-				{:else}
-					<button class="cursor-pointer" onclick={(e) => championClick(e, champion.id)}>
-						<img src={`/img/cache/${champion?.image.full}`} alt={champion.name} />
-					</button>
-				{/if}
-			</div>
-		{/each}
+				<div class={['m-1.5', 'h-11', 'w-11', champion == undefined ? 'p-[11px]' : '']}>
+					{#if champion == undefined}
+						<div class="v-full h-full rounded-full bg-white/50"></div>
+					{:else}
+						<button class="cursor-pointer" onclick={(e) => championClick(e, champion.id)}>
+							<img src={`/img/cache/${champion?.image.full}`} alt={champion.name} />
+						</button>
+					{/if}
+				</div>
+			{/each}
+		</div>
+		<Button class="m-3" title="Clear selections" onclick={clear}>
+			<i class="fa-solid fa-fw fa-trash"></i> Clear
+		</Button>
+		<Button class="m-3" title="Copy a link to your current selection to the clipboard">
+			<i class="fa-solid fa-share"></i> Share
+		</Button>
 	</div>
-	<Button class="m-3" title="Clear selections" onclick={clear}>
-		<i class="fa-solid fa-fw fa-trash"></i> Clear
-	</Button>
-	<Button class="m-3" title="Copy a link to your current selection to the clipboard">
-		<i class="fa-solid fa-share"></i> Share
-	</Button>
-</div>
 
-<div class="flex">
-	<table class="shrink grow">
+	<table class="challenges_list">
 		<thead>
 			<tr>
 				<th class="px-2"></th>
@@ -192,20 +192,51 @@
 		</tbody>
 	</table>
 
-	<div>
-		<div class="flex flex-wrap justify-center">
-			{#each championsOrdered as champion}
-				<button
-					class="m-1 ring-amber-400 transition-all duration-75"
-					class:ring-2={championsSelected.includes(champion.id)}
-					class:cursor-pointer={canAdd || championsSelected.includes(champion.id)}
-					onclick={(e) => championClick(e, champion.id)}
-					class:opacity-35={!championsKeyForSelectedChallenges.includes(champion.key) &&
-						championsKeyForSelectedChallenges.length != 0}
-				>
-					<img src={`/img/cache/${champion.image.full}`} alt={champion.name} class="w-16" />
-				</button>
-			{/each}
-		</div>
+	<div class="champions_pool flex flex-wrap content-start justify-center">
+		{#each championsOrdered as champion}
+			<button
+				class="m-1 ring-amber-400 transition-all duration-75"
+				class:ring-2={championsSelected.includes(champion.id)}
+				class:cursor-pointer={canAdd || championsSelected.includes(champion.id)}
+				onclick={(e) => championClick(e, champion.id)}
+				class:opacity-35={!championsKeyForSelectedChallenges.includes(champion.key) &&
+					championsKeyForSelectedChallenges.length != 0}
+			>
+				<img src={`/img/cache/${champion.image.full}`} alt={champion.name} class="w-16" />
+			</button>
+		{/each}
 	</div>
 </div>
+
+<style>
+	.team_builder {
+		display: grid;
+		grid-template-areas:
+			'menu menu'
+			'chall pool';
+	}
+
+	@media screen and (max-width: 900px) {
+		.menu {
+			grid-area: 1 / span 2 !important;
+		}
+		.challenges_list {
+			grid-area: 2 / span 2 !important;
+		}
+		.champions_pool {
+			grid-area: 3 / span 2 !important;
+		}
+	}
+
+	@media screen and (min-width: 900px) {
+		.menu {
+			grid-area: menu;
+		}
+		.challenges_list {
+			grid-area: chall;
+		}
+		.champions_pool {
+			grid-area: pool;
+		}
+	}
+</style>
