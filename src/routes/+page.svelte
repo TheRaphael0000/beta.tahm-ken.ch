@@ -1,30 +1,15 @@
 <script lang="ts">
 	import { Button, InputText } from '$lib/components';
 	import Tooltip from '$lib/components/Tooltip.svelte';
-	import champions_json from 'data/cache/champion.cache.json';
-	import challenges_json from 'data/challenges.json';
+	import {
+		champions,
+		championsMap,
+		getChampions,
+		getChallengeRequirements,
+		challengesGroups
+	} from '$lib/challenges';
 
-	const challenges = Object.entries(challenges_json).map((c) => c[1]);
-
-	const groups = [
-		{
-			main: challenges_json[303400],
-			challenges: challenges.filter((c) => challenges_json[303400].childrenIds.includes(c.id))
-		},
-		{
-			main: challenges_json[303500],
-			challenges: challenges.filter((c) => challenges_json[303500].childrenIds.includes(c.id))
-		}
-	];
-
-	function getSize(challenge: any) {
-		if ([303407, 303408].includes(challenge.id) || challenge.parentId == 303500) return 5;
-		else return 3;
-	}
-
-	const championsAll = Object.entries(champions_json.data).map((c) => c[1]);
-	const championsMap = new Map(Object.entries(champions_json.data));
-	let champions = $state([...championsAll]);
+	let champions_filtered = $state([...champions]);
 	const championsSelected: string[] = $state([]);
 	let challengesSelected: any[] = $state([]);
 	const championsKeyForSelectedChallenges = $derived(
@@ -32,7 +17,7 @@
 	);
 	const canAdd = $derived(championsSelected.length < 5);
 
-	const championsOrdered = $derived(orderChampions(champions));
+	const championsOrdered = $derived(orderChampions(champions_filtered));
 
 	function orderChampions(champions: any) {
 		// order by name first
@@ -54,7 +39,7 @@
 
 	function filter(event: any) {
 		const value = event.target.value as string;
-		champions = championsAll.filter((c) =>
+		champions_filtered = champions.filter((c) =>
 			c.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
 		);
 	}
@@ -78,33 +63,6 @@
 	function clear(event: any) {
 		championsSelected.splice(0, championsSelected.length);
 		challengesSelected = challengesSelected.filter((a) => false);
-	}
-
-	function getChampions(challenges: any[]) {
-		const sets = [];
-		for (const challenge of challenges) {
-			sets.push(new Set<number>(challenge.availableIds));
-		}
-
-		const result: any[] = [...intersectSets(sets)]
-			.map((key: number) => championsAll.find((c) => c.key == key.toString()))
-			.filter((k: any) => k != undefined);
-
-		return result;
-	}
-
-	function intersectSets(sets: Set<any>[]) {
-		if (!sets || sets.length === 0) {
-			return new Set();
-		}
-
-		let intersection = new Set(sets[0]);
-
-		for (let i = 1; i < sets.length; i++) {
-			intersection = intersection.intersection(sets[i]);
-		}
-
-		return intersection;
 	}
 </script>
 
@@ -161,8 +119,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each groups as group}
-				{@const main = group.main}
+			{#each challengesGroups as challengeGroup}
+				{@const main = challengeGroup.main}
 				<tr>
 					<td class="px-2"></td>
 					<td class="px-2"></td>
@@ -173,13 +131,16 @@
 						</Tooltip>
 					</td>
 				</tr>
-				{#each group.challenges as challenge}
+				{#each challengeGroup.challenges as challenge}
 					{@const championsChallenge = getChampions([challenge])}
 					{@const championsSelectedChallenge = championsChallenge.filter((champion: any) =>
 						championsSelected.includes(champion.id)
 					)}
-					{@const missingDots = Math.max(getSize(challenge) - championsSelectedChallenge.length, 0)}
-					<tr class:text-amber-300={missingDots <= 0}>
+					{@const missingDots = Math.max(
+						getChallengeRequirements(challenge) - championsSelectedChallenge.length,
+						0
+					)}
+					<tr class:text-amber-400={missingDots <= 0}>
 						<td class="px-2 pt-0.5 text-right"
 							><input
 								type="checkbox"
@@ -190,7 +151,11 @@
 							/></td
 						>
 						<td class="px-2 text-right">
-							<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer" style="width:30px; display inline-block;">
+							<label
+								for={`challenge_cb_${challenge.id}`}
+								class="cursor-pointer"
+								style="width:30px; display inline-block;"
+							>
 								{getChampions([...challengesSelected, challenge]).length}
 							</label>
 						</td>
@@ -231,7 +196,7 @@
 		<div class="flex flex-wrap justify-center">
 			{#each championsOrdered as champion}
 				<button
-					class="m-1 ring-amber-400/75 transition-all duration-75"
+					class="m-1 ring-amber-400 transition-all duration-75"
 					class:ring-2={championsSelected.includes(champion.id)}
 					class:cursor-pointer={canAdd || championsSelected.includes(champion.id)}
 					onclick={(e) => championClick(e, champion.id)}
