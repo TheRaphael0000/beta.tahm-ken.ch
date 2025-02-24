@@ -112,7 +112,7 @@
 		<thead>
 			<tr>
 				<th class="px-2"></th>
-				<th class="px-2 text-right">#</th>
+				<th class="px-2 text-right">&nbsp;&nbsp;#</th>
 				<th class="px-2 text-left">Challenges</th>
 				<th class="px-2"></th>
 				<th class="px-2 text-left">Selection</th>
