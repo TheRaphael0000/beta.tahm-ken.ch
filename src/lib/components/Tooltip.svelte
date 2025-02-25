@@ -1,17 +1,13 @@
 <script lang="ts">
-	let { children, class: propClasses = '', text, ...props } = $props();
+	let { text, children } = $props();
 	let visible = $state(false);
 </script>
 
-<span
-	{...props}
-	class={['cursor-help', "border-b-1 border-dashed border-white", propClasses]}
-	onmouseover={() => (visible = true)}
-	onmouseleave={() => (visible = false)}
->
-	{text}
+<span onmouseover={() => (visible = true)} onmouseleave={() => (visible = false)}>
+	{@render text()}
+
 	{#if visible}
-		<div class="absolute bg-black/95 p-3 -mt-10 ml-5 z-10 pointer-events-none">
+		<div class="pointer-events-none absolute z-10 -mt-10 ml-5 bg-black/95 p-3">
 			{@render children()}
 		</div>
 	{/if}

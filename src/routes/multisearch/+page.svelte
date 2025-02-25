@@ -6,6 +6,7 @@
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { challengesSite } from '$lib/challenges';
+	import Tooltip from '$lib/components/Tooltip.svelte';
 
 	let summoners: string = $state('');
 	let region: string = $state('');
@@ -81,16 +82,13 @@
 				total += threshold;
 				completed += Math.min(value, threshold);
 			}
-			console.log(completed, total);
 			completion.set(summoner.account.puuid, completed / total);
 		}
-		// multisearch.sort((a, b) => {
-		// 	const aOrder = order.get(a.id);
-		// 	const bOrder = order.get(b.id);
-		// 	if (aOrder?.completion != bOrder?.completion)
-		// 		return (aOrder?.completion ?? 0) - (bOrder?.completion ?? 0);
-		// 	return (bOrder?.mae ?? 0) - (aOrder?.mae ?? 0);
-		// });
+		multisearch.sort((a: any, b: any) => {
+			const aCompletion = completion.get(a.account.puuid) ?? 0;
+			const bCompletion = completion.get(b.account.puuid) ?? 0;
+			return aCompletion - bCompletion;
+		});
 	}
 </script>
 
@@ -101,7 +99,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th class="py-2 text-left" colspan="2">Summoner</th>
+					<th class="py-2 text-left" colspan="3">Summoner</th>
 					<th class="py-2 text-left" colspan="9999">Challenges</th>
 				</tr>
 			</thead>
@@ -110,10 +108,20 @@
 					{@const account = summoner.account}
 					{@const challenges = summoner.challenges}
 					{@const globalLevel = challenges.totalPoints.level.toLocaleLowerCase()}
+					{@const icon = summoner.summoner.profileIconId}
 
 					<tr>
-						<td class="px-2">
-							<span class="whitespace-nowrap">{account.gameName}</span>#{account.tagLine}
+						<td class="pr-2">
+							<span class="whitespace-nowrap">{account.gameName}</span><span
+								class="text-xs text-gray-500">#{account.tagLine}</span
+							>
+						</td>
+						<td>
+							<img
+								class="h-10 max-h-10 w-10 max-w-10"
+								src={`https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon${icon}.png`}
+								alt={globalLevel}
+							/>
 						</td>
 						<td>
 							<img
@@ -130,14 +138,19 @@
 							)}
 							{@const challengeLevel = summonerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
 							<td class="relative">
-								<span class="absolute right-0 bottom-0 text-right"
-									>{summonerChallenge?.value ?? '0'}</span
-								>
-								<img
-									class="h-10 max-h-10 w-10 max-w-10"
-									src={`https://raw.communitydragon.org/latest/game/assets/challenges/config/${challenge.id}/tokens/${challengeLevel}.png`}
-									alt={challengeLevel}
-								/>
+								<Tooltip>
+									{#snippet text()}
+										<span class="absolute right-1 bottom-0 text-right"
+											>{summonerChallenge?.value ?? '0'}</span
+										>
+										<img
+											class="h-10 max-h-10 w-10 max-w-10"
+											src={`https://raw.communitydragon.org/latest/game/assets/challenges/config/${challenge.id}/tokens/${challengeLevel}.png`}
+											alt={challengeLevel}
+										/>
+									{/snippet}
+									<div class="text-nowrap">{challenge.name}</div>
+								</Tooltip>
 							</td>
 						{/each}
 
@@ -146,17 +159,15 @@
 						</td>
 					</tr>
 				{/each}
-				<tr class="border-b-1 h-3">
-
-				</tr>
+				<tr class="h-3 border-b-1"> </tr>
 				<tr>
-					<td class="py-2 italic" colspan="2">Completion</td>
+					<td class="py-2 italic" colspan="3">Completion</td>
 					{#each challengesSite as challenge}
 						<td class="text-center italic">{order.get(challenge.id)?.completion}</td>
 					{/each}
 				</tr>
 				<tr>
-					<td class="py-2 italic" colspan="2">MAE</td>
+					<td class="py-2 italic" colspan="3">MAE</td>
 					{#each challengesSite as challenge}
 						<td class="text-center italic">{order.get(challenge.id)?.mae.toFixed(1)}</td>
 					{/each}
@@ -164,6 +175,10 @@
 			</tbody>
 		</table>
 	{:else}
+		<p>
+			Enter the summoners name + tag of all the players in your lobby. You can copy/paste join
+			messages in chat.
+		</p>
 		<label>
 			<p>Region</p>
 			<Select class="block w-full" bind:value={region}>

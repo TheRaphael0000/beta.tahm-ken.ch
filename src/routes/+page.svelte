@@ -8,6 +8,7 @@
 		getChallengeRequirements,
 		challengesGroups
 	} from '$lib/challenges';
+	import HelpText from '$lib/components/HelpText.svelte';
 
 	let champions_filtered = $state([...champions]);
 	const championsSelected: string[] = $state([]);
@@ -65,6 +66,10 @@
 		challengesSelected = challengesSelected.filter((a) => false);
 	}
 </script>
+
+{#snippet helpText()}
+	<HelpText>?</HelpText>
+{/snippet}
 
 <div class="team_builder">
 	<div class="menu flex flex-wrap justify-center">
@@ -126,7 +131,7 @@
 					<td class="px-2"></td>
 					<th class="px-2 text-left">{main.name}</th>
 					<td class="px-2 text-left">
-						<Tooltip text="?">
+						<Tooltip text={helpText}>
 							{main.description}
 						</Tooltip>
 					</td>
@@ -165,7 +170,7 @@
 							</label>
 						</td>
 						<td class="px-2 text-left">
-							<Tooltip text="?">
+							<Tooltip text={helpText}>
 								{challenge.description}
 							</Tooltip>
 						</td>
