@@ -11,3 +11,11 @@ export function intersectSets(sets: Set<any>[]) {
 
 	return intersection;
 }
+
+export function* chain(...iterables: any[]) {
+	for (const iterable of iterables) {
+		for (const item of iterable) {
+			yield item;
+		}
+	}
+}
