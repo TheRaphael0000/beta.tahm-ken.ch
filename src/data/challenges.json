@@ -1,0 +1,2947 @@
+{
+    "303400": {
+        "availableIds": [],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [
+            303412,
+            303410,
+            303411,
+            303404,
+            303405,
+            303406,
+            303407,
+            303401,
+            303402,
+            303403,
+            303408,
+            303409
+        ],
+        "description": "Earn progress from challenges in the Harmony group",
+        "descriptionShort": "Earn progress from challenges in the Harmony group",
+        "gameModes": [],
+        "hasLeaderboard": false,
+        "id": 303400,
+        "idListType": "NONE",
+        "isCapstone": true,
+        "isReverseDirection": false,
+        "name": "Harmony",
+        "parentId": 303000,
+        "parentName": "Alliance",
+        "retireTimestamp": 0,
+        "source": "CHALLENGES",
+        "thresholds": {
+            "BRONZE": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 10
+                    }
+                ],
+                "value": 100.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "TITLE",
+                        "name": "Harmonious",
+                        "quantity": 1
+                    },
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 580.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 200.0
+            },
+            "IRON": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 5
+                    }
+                ],
+                "value": 50.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 950.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 320.0
+            },
+            "SILVER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 15
+                    }
+                ],
+                "value": 150.0
+            }
+        }
+    },
+    "303401": {
+        "availableIds": [
+            3,
+            4,
+            901,
+            711,
+            136,
+            202,
+            13,
+            14,
+            3151,
+            16,
+            80,
+            145,
+            81,
+            3156,
+            22,
+            30,
+            222,
+            800,
+            98,
+            99,
+            163,
+            101,
+            166,
+            233,
+            41,
+            235,
+            876,
+            240,
+            432,
+            50,
+            115,
+            51,
+            119,
+            56,
+            57
+        ],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 3 or more champions with a global ability",
+        "descriptionShort": "Win with a 5-stack of <em>champs with 3+ global abilities</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303401,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Nowhere to Hide",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303402": {
+        "availableIds": [
+            1,
+            3,
+            131,
+            516,
+            5,
+            901,
+            518,
+            902,
+            8,
+            136,
+            9,
+            777,
+            10,
+            267,
+            268,
+            910,
+            526,
+            143,
+            147,
+            20,
+            21,
+            150,
+            25,
+            154,
+            28,
+            29,
+            30,
+            800,
+            32,
+            33,
+            161,
+            34,
+            420,
+            37,
+            40,
+            41,
+            42,
+            432,
+            50,
+            53,
+            54,
+            55,
+            57,
+            59,
+            61,
+            68,
+            69,
+            200,
+            72,
+            201,
+            74,
+            3147,
+            3151,
+            79,
+            3152,
+            80,
+            3153,
+            81,
+            3156,
+            85,
+            89,
+            91,
+            92,
+            221,
+            350,
+            3678,
+            222,
+            99,
+            360,
+            104,
+            233,
+            105,
+            106,
+            235,
+            875,
+            3947,
+            112,
+            113,
+            497,
+            498,
+            115,
+            245,
+            246,
+            119,
+            120,
+            888,
+            893,
+            127,
+            895
+        ],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 3 or more champions with an ultimate with a large Area of Effect",
+        "descriptionShort": "Win with a 5-stack with 3+ <em>champs with a large AOE ult</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303402,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "It Has \"Ultimate\" In the Name!",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303403": {
+        "availableIds": [
+            64,
+            1,
+            897,
+            3,
+            902,
+            72,
+            10,
+            267,
+            203,
+            12,
+            76,
+            910,
+            16,
+            3153,
+            147,
+            3156,
+            25,
+            26,
+            412,
+            350,
+            223,
+            98,
+            99,
+            37,
+            40,
+            233,
+            235,
+            427,
+            43,
+            44,
+            432,
+            497,
+            114,
+            117,
+            950,
+            888,
+            61,
+            895
+        ],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 3 or more champions with a heal or shield. <i>Self-heals and self-shields do not count</i>",
+        "descriptionShort": "Win with a 5-stack of 3+ <em>champs with heals or shields.</em> ",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303403,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "We Protec",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303404": {
+        "availableIds": [
+            897,
+            2,
+            5,
+            8,
+            200,
+            201,
+            10,
+            11,
+            203,
+            12,
+            141,
+            14,
+            80,
+            23,
+            24,
+            90,
+            26,
+            154,
+            28,
+            350,
+            30,
+            223,
+            96,
+            800,
+            34,
+            166,
+            105,
+            44,
+            429,
+            238,
+            240,
+            432,
+            114,
+            245,
+            887,
+            888,
+            57,
+            60,
+            127
+        ],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 3 or more champions with a revive, immunity, or zombie ability",
+        "descriptionShort": "Win with a 5-stack of 3+ champions that <em>defy death</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303404,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "They Just... Don't... DIE!",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303405": {
+        "availableIds": [
+            35,
+            67,
+            518,
+            166,
+            7,
+            234,
+            235,
+            555,
+            107,
+            17,
+            145,
+            84,
+            246,
+            56,
+            121,
+            91,
+            28,
+            29,
+            62
+        ],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 3 or more champions with stealth (camouflage or invisibility count)",
+        "descriptionShort": "Win with a 5-stack with 3+ <em>champs with stealth</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303405,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Where'd They Go?",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303406": {
+        "availableIds": [
+            4,
+            901,
+            902,
+            711,
+            202,
+            268,
+            76,
+            910,
+            142,
+            15,
+            80,
+            3153,
+            145,
+            81,
+            147,
+            22,
+            221,
+            350,
+            222,
+            31,
+            96,
+            800,
+            161,
+            99,
+            163,
+            36,
+            101,
+            166,
+            102,
+            41,
+            42,
+            235,
+            3947,
+            43,
+            110,
+            112,
+            240,
+            498,
+            115,
+            51,
+            57,
+            893,
+            126
+        ],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 3 or more \"poke\" champions (champions with long-range, non-targeted abilities)",
+        "descriptionShort": "Win with a 5-stack with 3+ <em>poke champs</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303406,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "We're Good Over Here",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303407": {
+        "availableIds": [
+            1,
+            35,
+            420,
+            518,
+            200,
+            9,
+            74,
+            427,
+            203,
+            268,
+            429,
+            238,
+            143,
+            83,
+            950,
+            57,
+            90,
+            60,
+            61,
+            3678,
+            127
+        ],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions with a summon or a pet",
+        "descriptionShort": "Win with a 5-stack of <em>champs with a summon or pet</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303407,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Summoners on the Rift",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303408": {
+        "availableIds": [],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade of 5, win games as 5 champions of one class (assassin, mage, marksman, tank, support, or fighter)",
+        "descriptionShort": "Win with a 5-stack of all one class",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303408,
+        "idListType": "NONE",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Variety's Overrated",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303409": {
+        "availableIds": [
+            64,
+            897,
+            67,
+            5,
+            6,
+            72,
+            777,
+            12,
+            268,
+            526,
+            78,
+            79,
+            18,
+            82,
+            150,
+            154,
+            27,
+            412,
+            223,
+            163,
+            40,
+            875,
+            555,
+            111,
+            240,
+            50,
+            115,
+            53,
+            120,
+            57,
+            122,
+            61,
+            126,
+            895
+        ],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 3 or more champions with a displacement",
+        "descriptionShort": "Win with a 5-stack with 3+ <em>champs with displacements</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303409,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Get Over Here",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303410": {
+        "availableIds": [
+            115,
+            35,
+            51,
+            41,
+            57,
+            202,
+            76,
+            222,
+            143
+        ],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 3 or more champions with a trap",
+        "descriptionShort": "Win with a 5-stack with 3+ <em> champs with traps</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303410,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "It's a Trap!",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303411": {
+        "availableIds": [
+            48,
+            34,
+            163,
+            83,
+            516,
+            39,
+            427,
+            59,
+            268,
+            893,
+            45
+        ],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 3 or more champions with the ability to create terrain",
+        "descriptionShort": "Win with a 5-stack of champs with 3+ <em>champs with terrain creation</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303411,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "I'm Helping",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303412": {
+        "availableIds": [
+            897,
+            3,
+            516,
+            5,
+            518,
+            6,
+            7,
+            777,
+            266,
+            267,
+            12,
+            14,
+            526,
+            143,
+            19,
+            147,
+            20,
+            150,
+            25,
+            154,
+            27,
+            412,
+            157,
+            32,
+            33,
+            34,
+            35,
+            164,
+            40,
+            427,
+            555,
+            432,
+            53,
+            57,
+            59,
+            72,
+            201,
+            3147,
+            78,
+            79,
+            3152,
+            3153,
+            3156,
+            89,
+            92,
+            223,
+            233,
+            875,
+            111,
+            240,
+            113,
+            497,
+            117,
+            246,
+            120,
+            888,
+            254,
+            127
+        ],
+        "capstoneGroupId": 303400,
+        "capstoneGroupName": "Harmony",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 3 or more champions with 2 or more immobilizing spells",
+        "descriptionShort": "Win with a 5-stack with 3+ <em>champs with 2+ immobilizing spells</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": true,
+        "id": 303412,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Hold That Pose",
+        "parentId": 303400,
+        "parentName": "Harmony",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "CHALLENGER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 15.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 5.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "GRANDMASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 8.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303500": {
+        "availableIds": [],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [
+            303501,
+            303502,
+            303503,
+            303508,
+            303509,
+            303510,
+            303511,
+            303504,
+            303505,
+            303506,
+            303507,
+            303512,
+            303513
+        ],
+        "description": "Earn progress from challenges in the Globetrotter group",
+        "descriptionShort": "Earn progress from challenges in the Globetrotter group",
+        "gameModes": [],
+        "hasLeaderboard": false,
+        "id": 303500,
+        "idListType": "NONE",
+        "isCapstone": true,
+        "isReverseDirection": false,
+        "name": "Globetrotter",
+        "parentId": 303000,
+        "parentName": "Alliance",
+        "retireTimestamp": 0,
+        "source": "CHALLENGES",
+        "thresholds": {
+            "BRONZE": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 10
+                    }
+                ],
+                "value": 100.0
+            },
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "TITLE",
+                        "name": "Runeterran",
+                        "quantity": 1
+                    },
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 620.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 215.0
+            },
+            "IRON": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 5
+                    }
+                ],
+                "value": 50.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 1050.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 385.0
+            },
+            "SILVER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 15
+                    }
+                ],
+                "value": 150.0
+            }
+        }
+    },
+    "303501": {
+        "availableIds": [
+            68,
+            711,
+            105,
+            42,
+            74,
+            45,
+            78,
+            240,
+            17,
+            18,
+            115,
+            117,
+            85,
+            150,
+            350
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from Bandle City",
+        "descriptionShort": "Win with a 5-stack of <em>champs from Bandle City</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303501,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "5 Under 5'",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303502": {
+        "availableIds": [
+            4,
+            420,
+            21,
+            104,
+            41,
+            105,
+            555,
+            3678,
+            111,
+            895,
+            223
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from Bilgewater",
+        "descriptionShort": "Win with a 5-stack of <em>champs from Bilgewater</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303502,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "All Hands on Deck",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303503": {
+        "availableIds": [
+            99,
+            3,
+            67,
+            517,
+            5,
+            133,
+            37,
+            102,
+            10,
+            236,
+            78,
+            114,
+            86,
+            25,
+            59
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from Demacia",
+        "descriptionShort": "Win with a 5-stack of <em>champs from Demacia</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303503,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "FOR DEMACIA",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303504": {
+        "availableIds": [
+            2,
+            34,
+            516,
+            201,
+            106,
+            77,
+            79,
+            48,
+            113,
+            20,
+            22,
+            150,
+            23,
+            893,
+            127
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from the Freljord",
+        "descriptionShort": "Win with a 5-stack of <em>champs from the Freljord</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303504,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Ice, Ice, Baby",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303505": {
+        "availableIds": [
+            64,
+            134,
+            777,
+            202,
+            11,
+            141,
+            910,
+            84,
+            3157,
+            85,
+            3159,
+            157,
+            98,
+            39,
+            103,
+            875,
+            3947,
+            427,
+            43,
+            876,
+            110,
+            238,
+            497,
+            498,
+            62
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from Ionia",
+        "descriptionShort": "Win with a 5-stack of <em>champs from Ionia</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303505,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Everybody was Wuju Fighting",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303506": {
+        "availableIds": [
+            518,
+            246,
+            54,
+            902,
+            72,
+            107,
+            76,
+            143
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from Ixtal",
+        "descriptionShort": "Win with a 5-stack of <em>champs from Ixtal</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303506,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Elemental, My Dear Watson",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303507": {
+        "availableIds": [
+            800,
+            69,
+            7,
+            360,
+            8,
+            233,
+            3147,
+            14,
+            526,
+            240,
+            50,
+            82,
+            3156,
+            119,
+            55,
+            122,
+            91,
+            92,
+            799
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from Noxus",
+        "descriptionShort": "Win with a 5-stack of <em>champs from Noxus</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303507,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Strength Above All",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303508": {
+        "availableIds": [
+            3153,
+            81,
+            147,
+            51,
+            164,
+            42,
+            74,
+            61,
+            126,
+            254
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from Piltover",
+        "descriptionShort": "Win with a 5-stack of <em>champs from Piltover</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303508,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Calculated",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303509": {
+        "availableIds": [
+            83,
+            887,
+            711,
+            120,
+            9,
+            57,
+            234,
+            235,
+            412,
+            60,
+            429,
+            30
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from the Shadow Isles",
+        "descriptionShort": "Win with a 5-stack of <em>champs from the Shadow Isles</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303509,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Spooky Scary Skeletons",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303510": {
+        "availableIds": [
+            32,
+            897,
+            33,
+            163,
+            101,
+            950,
+            166,
+            58,
+            75,
+            268,
+            15
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from Shurima",
+        "descriptionShort": "Win with a 5-stack of <em>champs from Shurima</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303510,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "The Sun Disc Never Sets",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303511": {
+        "availableIds": [
+            16,
+            3152,
+            80,
+            131,
+            136,
+            89,
+            523,
+            44,
+            142
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from Targon",
+        "descriptionShort": "Win with a 5-stack of <em>champs from Targon</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303511,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Peak Performance",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303512": {
+        "availableIds": [
+            96,
+            145,
+            161,
+            421,
+            38,
+            200,
+            121,
+            90,
+            31
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from the Void",
+        "descriptionShort": "Win with a 5-stack of <em>champs from the Void</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303512,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "(Inhuman Screeching Sounds)",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    },
+    "303513": {
+        "availableIds": [
+            36,
+            6,
+            40,
+            3151,
+            112,
+            115,
+            19,
+            245,
+            53,
+            888,
+            154,
+            27,
+            29,
+            221,
+            222
+        ],
+        "capstoneGroupId": 303500,
+        "capstoneGroupName": "Globetrotter",
+        "category": "TEAMWORK",
+        "childrenIds": [],
+        "description": "As a premade 5, win games with 5 champions from Zaun",
+        "descriptionShort": "Win with a 5-stack of <em>champs from Zaun</em>",
+        "gameModes": [
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "CLASSIC",
+            "SWIFTPLAY"
+        ],
+        "hasLeaderboard": false,
+        "id": 303513,
+        "idListType": "CHAMPION",
+        "isCapstone": false,
+        "isReverseDirection": false,
+        "name": "Chemtech Comrades",
+        "parentId": 303500,
+        "parentName": "Globetrotter",
+        "retireTimestamp": 0,
+        "source": "EOGD",
+        "thresholds": {
+            "DIAMOND": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 60
+                    }
+                ],
+                "value": 6.0
+            },
+            "GOLD": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 25
+                    }
+                ],
+                "value": 1.0
+            },
+            "MASTER": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 100
+                    }
+                ],
+                "value": 10.0
+            },
+            "PLATINUM": {
+                "rewards": [
+                    {
+                        "asset": "",
+                        "category": "CHALLENGE_POINTS",
+                        "name": "",
+                        "quantity": 40
+                    }
+                ],
+                "value": 3.0
+            }
+        }
+    }
+}
