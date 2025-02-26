@@ -5,6 +5,10 @@
 	import discord_invites from 'data/cache/discord.cache.json';
 </script>
 
+<svelte:head>
+    <title>Community</title>
+</svelte:head>
+
 <Article>
 	<H1>Community</H1>
 

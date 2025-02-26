@@ -7,4 +7,4 @@ export { default as InputText } from './InputText.svelte';
 export { default as Select } from './Select.svelte';
 export { default as Option } from './Option.svelte';
 export { default as TextArea } from './TextArea.svelte';
-export { default as A } from './A.svelte';
+export { default as Link } from './Link.svelte';

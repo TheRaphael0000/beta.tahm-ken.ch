@@ -17,7 +17,7 @@
 			text: 'Challenges compositions'
 		},
 		{
-			href: '/multisearch',
+			href: '/multisearch/search',
 			text: 'Multisearch'
 		},
 		{
@@ -43,7 +43,7 @@
 		},
 		{
 			text: 'github',
-			href: 'https://github.com/TheRaphael0000/tahm-ken.ch/',
+			href: 'https://github.com/TheRaphael0000/beta.tahm-ken.ch/',
 			class: 'fa-brands fa-github text-zinc-50'
 		}
 	];
@@ -57,6 +57,10 @@
 	onMount(updateQuote);
 	setInterval(updateQuote, 10000);
 </script>
+
+<svelte:head>
+    <title>Team Builder</title>
+</svelte:head>
 
 <header>
 	<div class="bg_img"></div>
