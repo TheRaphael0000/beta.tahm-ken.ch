@@ -5,6 +5,7 @@
 	import regions from 'data/regions.json';
 	import donators from 'data/donators.json';
 	import { goto } from '$app/navigation';
+	import { parseJoinText } from '$lib/utils';
 
 	let summoners: string = $state('');
 	let region: string = $state('');
@@ -31,6 +32,23 @@
 		let url = `/multisearch/result?region=${region}&summoners=${cleanSummoners}`;
 		goto(url);
 	}
+
+	function paste(event: any) {
+		const area = event.target;
+		event.preventDefault();
+		let paste = event.clipboardData.getData('text');
+
+		paste = parseJoinText(paste)
+
+		// handle selection
+		const selectionStart = area.selectionStart
+		const selectionEnd = area.selectionEnd
+		const currentValue = area.value
+		const modifiedValue = currentValue.substring(0, selectionStart) + paste + currentValue.substring(selectionEnd)
+		area.value = modifiedValue
+		const newPosition = selectionStart + paste.length
+		area.setSelectionRange(newPosition, newPosition)
+	}
 </script>
 
 <svelte:head>
@@ -52,7 +70,13 @@
 
 <label>
 	<p>Summoners</p>
-	<TextArea class="block w-full" rows="8" bind:value={summoners} placeholder={donatorsStr} />
+	<TextArea
+		class="block w-full"
+		rows="8"
+		bind:value={summoners}
+		placeholder={donatorsStr}
+		onpaste={paste}
+	/>
 </label>
 
 <p>

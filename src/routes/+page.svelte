@@ -67,6 +67,10 @@
 	}
 </script>
 
+<svelte:head>
+    <title>Team Builder</title>
+</svelte:head>
+
 {#snippet helpText()}
 	<HelpText>?</HelpText>
 {/snippet}

@@ -22,7 +22,7 @@
 			return;
 		}
 		const response = await fetch(
-			`/api/challenges_player_data/${region}/${summoners}?masteries=True`
+			`/api/player_data/${region}/${summoners}?masteries=True`
 		);
 		multisearch = await response.json();
 		computeOrder();
