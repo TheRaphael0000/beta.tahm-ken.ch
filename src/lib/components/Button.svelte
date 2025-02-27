@@ -7,7 +7,7 @@
 <button
 	{...props}
 	class={[
-		inputClass,
+		...inputClass,
 		'transition-all',
 		'hover:bg-white',
 		'hover:text-black',

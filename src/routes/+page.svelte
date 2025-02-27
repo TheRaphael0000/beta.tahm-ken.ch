@@ -1,22 +1,78 @@
 <script lang="ts">
-	import { Button, InputText } from '$lib/components';
+	import { Button, InputText, Select, Option } from '$lib/components';
+	import regions from 'data/regions.json';
 	import Tooltip from '$lib/components/Tooltip.svelte';
+	import { browser } from '$app/environment';
+	import { page } from '$app/state';
 	import {
 		champions,
 		championsMap,
 		getChampions,
 		getChallengeRequirements,
-		challengesGroups
+		challengesGroups,
+		challengesSite
 	} from '$lib/challenges';
+	import { goto } from '$app/navigation';
 	import HelpText from '$lib/components/HelpText.svelte';
+	import Pill from '$lib/components/Pill.svelte';
 
 	let champions_filtered = $state([...champions]);
 	const championsSelected: string[] = $state([]);
 	let challengesSelected: any[] = $state([]);
+	let summoner: string = $state('');
+	let region: string = $state('');
+	let icon: string = $state('');
+	let globalLevel: string = $state('');
+
+	let challengesCompleted: number = $state(0);
+	let challengesTotal: number = $state(0);
+
 	const championsKeyForSelectedChallenges = $derived(
 		getChampions(challengesSelected).map((c) => c.key)
 	);
 	const canAdd = $derived(championsSelected.length < 5);
+	let playerData: any = $state(undefined);
+
+	$effect(() => {
+		if (browser) {
+			if (region === '') {
+				region = localStorage.getItem('region') || '';
+			}
+			localStorage.setItem('region', region);
+		}
+	});
+
+	summoner = page.url.searchParams.get('summoner') ?? '';
+	region = page.url.searchParams.get('region') ?? '';
+
+	$effect(() => {
+		const urlSummoner = page.url.searchParams.get('summoner') ?? '';
+		const urlRegion = page.url.searchParams.get('region') ?? '';
+
+		if (urlSummoner && urlRegion) {
+			(async () => {
+				const response = await fetch(`/api/player_data/${urlRegion}/${urlSummoner}`);
+				playerData = (await response.json()).at(0);
+				if (playerData) {
+					summoner = `${playerData?.account?.gameName}#${playerData?.account?.tagLine}`;
+					globalLevel = playerData.challenges.totalPoints.level.toLocaleLowerCase();
+					icon = playerData.summoner.profileIconId;
+
+					challengesCompleted = 0;
+					challengesTotal = 0;
+					for (let challenge of challengesSite) {
+						const summonerChallenge = playerData.challenges.challenges.find(
+							(c: any) => c.challengeId == challenge.id
+						);
+						const value = summonerChallenge?.value ?? 0;
+						const threshold = challenge.thresholds.MASTER.value;
+						challengesCompleted += Math.min(value, threshold);
+						challengesTotal += threshold;
+					}
+				}
+			})();
+		}
+	});
 
 	const championsOrdered = $derived(orderChampions(champions_filtered));
 
@@ -65,10 +121,18 @@
 		championsSelected.splice(0, championsSelected.length);
 		challengesSelected = challengesSelected.filter((a) => false);
 	}
+
+	function search(event: any) {
+		event.preventDefault();
+		let url = `/?region=${region}&summoner=${summoner.replace('#', '-')}`;
+		goto(url);
+	}
+
+	$inspect(playerData);
 </script>
 
 <svelte:head>
-    <title>Team Builder</title>
+	<title>Team Builder</title>
 </svelte:head>
 
 {#snippet helpText()}
@@ -76,45 +140,84 @@
 {/snippet}
 
 <div class="team_builder">
-	<div class="menu flex flex-wrap justify-center">
-		<Button class="m-3" title="Show/Hide completed challenges">
-			<i class="fa-solid fa-fw fa-eye"></i>
-		</Button>
-		<InputText
-			class="m-3"
-			title="Search for champions, enter allows you to selected when only one champion matches the search"
-			placeholder="Search champion..."
-			oninput={filter}
-			onkeypress={filterKey}
-		/>
-		<Button
+	<div class="menu1">
+		<div class="my-2 flex gap-2">
+			<form class="flex" onsubmit={search}>
+				<Select class="rounded-r-none" bind:value={region}>
+					{#each regions as region}
+						<Option value={region.id}>{region.abbreviation}</Option>
+					{/each}
+				</Select>
+				<InputText
+					class="-ml-[1px] rounded-none {playerData == undefined
+						? 'text-red-500'
+						: 'text-green-500'}"
+					title="Search your account"
+					placeholder="Summoner name#tag..."
+					bind:value={summoner}
+				/>
+				<Button class="-ml-[1px] rounded-l-none" type="submit">
+					<i class="fa-solid fa-fw fa-magnifying-glass"></i>
+				</Button>
+			</form>
+			{#if playerData}
+				<img
+					class="h-10 max-h-10 w-10 max-w-10"
+					src={`https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon${icon}.png`}
+					alt={'icon' + icon}
+				/>
+				<img
+					class="h-10 max-h-10 w-10 max-w-10"
+					src="/img/challengecrystal/{globalLevel}.ls_c2.png"
+					alt={globalLevel}
+				/>
+				<Pill>
+					{challengesCompleted}/{challengesTotal}
+				</Pill>
+
+				<Button title="Show/Hide completed challenges">
+					<i class="fa-solid fa-fw fa-eye"></i>
+				</Button>
+			{/if}
+		</div>
+	</div>
+	<div class="menu2">
+		<div class="my-2 flex justify-center gap-2">
+			<InputText
+				title="Search for champions, enter allows you to selected when only one champion matches the search"
+				placeholder="Search champion..."
+				oninput={filter}
+				onkeypress={filterKey}
+			/>
+			<!-- <Button
 			class="m-3"
 			title="Find compositions that satify the current selection (selected champions and challenges)."
 		>
 			<i class="fa-solid fa-wand-magic-sparkles"></i> Optimize selection
-		</Button>
-		<div class="mx-3 flex items-center">
-			{#each Array.from(Array(5).keys()) as i}
-				{@const championSelected = championsSelected.at(i) ?? ''}
-				{@const champion = championsMap.get(championSelected)}
+		</Button> -->
+			<div class="flex items-center gap-3">
+				{#each Array.from(Array(5).keys()) as i}
+					{@const championSelected = championsSelected.at(i) ?? ''}
+					{@const champion = championsMap.get(championSelected)}
 
-				<div class={['m-1.5', 'h-11', 'w-11', champion == undefined ? 'p-[11px]' : '']}>
-					{#if champion == undefined}
-						<div class="v-full h-full rounded-full bg-white/50"></div>
-					{:else}
-						<button class="cursor-pointer" onclick={(e) => championClick(e, champion.id)}>
-							<img src={`/img/cache/${champion?.image.full}`} alt={champion.name} />
-						</button>
-					{/if}
-				</div>
-			{/each}
-		</div>
-		<Button class="m-3" title="Clear selections" onclick={clear}>
-			<i class="fa-solid fa-fw fa-trash"></i> Clear
-		</Button>
-		<Button class="m-3" title="Copy a link to your current selection to the clipboard">
+					<div class={['h-10', 'w-10', champion == undefined ? 'p-[11px]' : '']}>
+						{#if champion == undefined}
+							<div class="v-full h-full rounded-full bg-white/50"></div>
+						{:else}
+							<button class="cursor-pointer" onclick={(e) => championClick(e, champion.id)}>
+								<img src={`/img/cache/${champion?.image.full}`} alt={champion.name} />
+							</button>
+						{/if}
+					</div>
+				{/each}
+			</div>
+			<Button title="Clear selections" onclick={clear}>
+				<i class="fa-solid fa-fw fa-trash"></i> Clear
+			</Button>
+			<!-- <Button class="m-3" title="Copy a link to your current selection to the clipboard">
 			<i class="fa-solid fa-share"></i> Share
-		</Button>
+		</Button> -->
+		</div>
 	</div>
 
 	<table class="challenges_list">
@@ -221,25 +324,31 @@
 	.team_builder {
 		display: grid;
 		grid-template-areas:
-			'menu menu'
+			'menu1 menu2'
 			'chall pool';
 	}
 
-	@media screen and (max-width: 900px) {
-		.menu {
+	@media screen and (max-width: 1000px) {
+		.menu1 {
 			grid-area: 1 / span 2 !important;
 		}
-		.challenges_list {
+		.menu2 {
 			grid-area: 2 / span 2 !important;
 		}
-		.champions_pool {
+		.challenges_list {
 			grid-area: 3 / span 2 !important;
+		}
+		.champions_pool {
+			grid-area: 4 / span 2 !important;
 		}
 	}
 
-	@media screen and (min-width: 900px) {
-		.menu {
-			grid-area: menu;
+	@media screen and (min-width: 1000px) {
+		.menu1 {
+			grid-area: menu1;
+		}
+		.menu2 {
+			grid-area: menu2;
 		}
 		.challenges_list {
 			grid-area: chall;

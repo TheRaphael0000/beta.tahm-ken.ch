@@ -13,12 +13,12 @@
 			text: 'Team Builder'
 		},
 		{
-			href: '/compositions',
-			text: 'Challenges compositions'
-		},
-		{
 			href: '/multisearch/search',
 			text: 'Multisearch'
+		},
+		{
+			href: '/compositions',
+			text: 'Challenges compositions'
 		},
 		{
 			href: '/community',

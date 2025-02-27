@@ -1,8 +1,8 @@
 export const inputClass = [
-	'cursor-pointer',
 	'rounded-md',
-	'border-1',
 	'border-white',
-	'px-6',
-	'py-1.5'
+	'border-1',
+	'px-3',
+	'cursor-pointer',
+	'py-2'
 ];

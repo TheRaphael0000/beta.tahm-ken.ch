@@ -103,7 +103,7 @@
                     <img
                         class="h-10 max-h-10 w-10 max-w-10"
                         src={`https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon${icon}.png`}
-                        alt={globalLevel}
+                        alt={'icon' + icon}
                     />
                 </td>
                 <td>
