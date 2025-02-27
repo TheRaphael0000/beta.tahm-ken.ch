@@ -68,8 +68,13 @@
 		<a href="/" aria-label="home">
 			<img src="/img/favicon.png" alt="logo" class="h-10" />
 		</a>
-		{#each headerNav as link}
-			<a class:border-b-1={currentPath === link.href} href={link.href}>{link.text}</a>
+		{#each headerNav as link, i}
+			<!-- svelte-ignore a11y_accesskey -->
+			<a
+				class:border-b-1={currentPath === link.href}
+				href={link.href}
+				accesskey={(i + 1).toString()}>{link.text}</a
+			>
 		{/each}
 	</nav>
 </header>

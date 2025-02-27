@@ -104,11 +104,12 @@
 	function filter(event: any) {
 		const value = event.target.value as string;
 		champions_filtered = champions.filter((c) =>
-			c.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+			c.name.toLocaleLowerCase().includes(value?.toLocaleLowerCase())
 		);
 	}
 
 	function filterKey(event: any) {
+		console.log(event);
 		if (event.key == 'Enter') {
 			event.target.value = '';
 			if (champions.length == 1) championClick(event, champions[0].id);
@@ -144,8 +145,9 @@
 	<HelpText>?</HelpText>
 {/snippet}
 
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="team_builder px-6">
-	<div class="menu1">
+	<div class="menu1 mr-auto">
 		<div class="my-2 flex gap-2">
 			<form class="flex" onsubmit={search}>
 				<Select class="rounded-r-none" bind:value={region}>
@@ -193,7 +195,7 @@
 			{/if}
 		</div>
 	</div>
-	<div class="menu2">
+	<div class="menu2 w-full">
 		<div class="my-2 flex justify-center gap-2">
 			<InputText
 				title="Search for champions, enter allows you to selected when only one champion matches the search"
@@ -232,7 +234,7 @@
 		</div>
 	</div>
 
-	<table class="challenges_list mb-auto">
+	<table class="challenges_list mr-auto mb-auto">
 		<thead>
 			<tr>
 				<th class="px-2"></th>
@@ -363,18 +365,23 @@
 		</tbody>
 	</table>
 
-	<div class="champions_pool flex flex-wrap content-start justify-center">
+	<div class="champions_pool flex w-full flex-wrap content-start justify-center">
 		{#each championsOrdered as champion}
-			<button
-				class="m-1 ring-amber-400 transition-all duration-75"
-				class:ring-2={championsSelected.includes(champion.id)}
-				class:cursor-pointer={canAdd || championsSelected.includes(champion.id)}
-				onclick={(e) => championClick(e, champion.id)}
-				class:opacity-35={!championsKeyForSelectedChallenges.includes(champion.key) &&
-					championsKeyForSelectedChallenges.length != 0}
-			>
-				<img src={`/img/cache/${champion.image.full}`} alt={champion.name} class="w-16" />
-			</button>
+			<Tooltip>
+				{#snippet text()}
+					<button
+						class="m-1 ring-amber-400 transition-all duration-75"
+						class:ring-2={championsSelected.includes(champion.id)}
+						class:cursor-pointer={canAdd || championsSelected.includes(champion.id)}
+						onclick={(e) => championClick(e, champion.id)}
+						class:opacity-35={!championsKeyForSelectedChallenges.includes(champion.key) &&
+							championsKeyForSelectedChallenges.length != 0}
+					>
+						<img src={`/img/cache/${champion.image.full}`} alt={champion.name} class="w-16" />
+					</button>
+				{/snippet}
+				{champion.name}
+			</Tooltip>
 		{/each}
 	</div>
 </div>
@@ -382,6 +389,8 @@
 <style>
 	.team_builder {
 		display: grid;
+		gap: 5px;
+		grid-template-columns: auto 1fr;
 		grid-template-areas:
 			'menu1 menu2'
 			'chall pool';
