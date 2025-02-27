@@ -6,14 +6,12 @@
 </script>
 
 <svelte:head>
-    <title>Community</title>
+	<title>Community</title>
 </svelte:head>
 
 <Article>
 	<H1>Community</H1>
 
-	<!-- League Tahm-Ken.ch -->
-	<DiscordCommunity community={discord_invites.aHs3uDraNU} />
 	<Community
 		href="https://challenges.darkintaqt.com/"
 		name="Challenge Tracker"
@@ -30,6 +28,8 @@
 	<!-- High Mastery -->
 	<DiscordCommunity community={discord_invites.zASN5E6RCv} />
 
+	<!-- Tahm-Ken.ch -->
+	<DiscordCommunity community={discord_invites.aHs3uDraNU} />
 	<p>
 		You can ask on the Tahm-Ken.ch Discord server if you want to add your community on the site (it
 		doesn't need to be a Discord server). You must be admin of this community.

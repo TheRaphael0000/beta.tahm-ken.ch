@@ -44,7 +44,6 @@ export default async function main() {
 		'champion.cache.json'
 	);
 
-	console.log(champions);
 	for (const [id, champion] of Object.entries(champions['data'])) {
 		await queryBlob(
 			`cdn/${version}/img/champion/${champion['image']['full']}`,

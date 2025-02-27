@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Button } from '$lib/components';
-	import H3 from '../../lib/components/H3.svelte';
 
 	let { src, href, name, text, buttonText } = $props();
 </script>
@@ -10,9 +9,9 @@
 >
 	<img {src} alt={name} class="h-[100px] w-[100px] rounded-full" />
 	<div class="m-6 flex w-full flex-col">
-		<H3>
+		<h2 class="text-xl">
 			{name}
-		</H3>
+		</h2>
 		<div>
 			{text}
 		</div>

@@ -10,23 +10,23 @@
 	let headerNav = [
 		{
 			href: '/',
-			text: 'Team Builder'
+			text: 'Tahm-Ken.ch'
 		},
 		{
-			href: '/multisearch/search',
+			href: '/multisearch',
 			text: 'Multisearch'
 		},
 		{
+			href: '/team_builder',
+			text: 'Team Builder'
+		},
+		{
 			href: '/compositions',
-			text: 'Challenges compositions'
+			text: 'Compositions'
 		},
 		{
 			href: '/community',
 			text: 'Community'
-		},
-		{
-			href: '/faq',
-			text: 'FAQ'
 		}
 	];
 
@@ -59,24 +59,22 @@
 </script>
 
 <svelte:head>
-    <title>Team Builder</title>
+	<title>Team Builder</title>
 </svelte:head>
 
 <header>
 	<div class="bg_img"></div>
-	<nav class="flex flex-wrap">
-		<a class="px-4 py-2" href="/" aria-label="home">
+	<nav class="mx-7 my-3 flex flex-wrap items-center justify-start gap-7">
+		<a href="/" aria-label="home">
 			<img src="/img/favicon.png" alt="logo" class="h-10" />
 		</a>
 		{#each headerNav as link}
-			<a class="my-2 px-4 py-2" class:border-b-1={currentPath === link.href} href={link.href}
-				>{link.text}</a
-			>
+			<a class:border-b-1={currentPath === link.href} href={link.href}>{link.text}</a>
 		{/each}
 	</nav>
 </header>
 
-<main class="px-6">
+<main>
 	{@render children()}
 </main>
 
@@ -107,7 +105,7 @@
 
 <style>
 	.bg_img {
-		background-image: url('/img/tahm_kench/TahmKench_30.jpg');
+		background-image: url('/img/tahm_kench/TahmKench_11.jpg');
 		position: fixed;
 		background-position: center;
 		background-size: cover;
