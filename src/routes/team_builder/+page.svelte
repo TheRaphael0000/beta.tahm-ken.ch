@@ -26,6 +26,7 @@
 
 	let challengesCompleted: number = $state(0);
 	let challengesTotal: number = $state(0);
+	let showCompleted: boolean = $state(true);
 
 	const championsKeyForSelectedChallenges = $derived(
 		getChampions(challengesSelected).map((c) => c.key)
@@ -61,7 +62,6 @@
 						summoner = `${playerData?.account?.gameName}#${playerData?.account?.tagLine}`;
 						globalLevel = playerData.challenges.totalPoints.level.toLocaleLowerCase();
 						icon = playerData.summoner.profileIconId;
-
 						challengesCompleted = 0;
 						challengesTotal = 0;
 						for (let challenge of challengesSite) {
@@ -75,6 +75,10 @@
 						}
 					}
 				})();
+			} else {
+				playerData = undefined;
+				summoner = '';
+				region = '';
 			}
 		}
 	});
@@ -130,8 +134,6 @@
 		let url = `${page.url.pathname}?region=${region}&summoner=${summoner.replace('#', '-')}`;
 		goto(url);
 	}
-
-	$inspect(playerData);
 </script>
 
 <svelte:head>
@@ -174,12 +176,19 @@
 					src="/img/challengecrystal/{globalLevel}.ls_c2.png"
 					alt={globalLevel}
 				/>
-				<Pill>
+				<Pill class="my-auto">
 					{challengesCompleted}/{challengesTotal}
 				</Pill>
 
-				<Button title="Show/Hide completed challenges">
-					<i class="fa-solid fa-fw fa-eye"></i>
+				<Button
+					title="Show/Hide completed challenges"
+					onclick={() => (showCompleted = !showCompleted)}
+				>
+					{#if showCompleted}
+						<i class="fa-solid fa-fw fa-eye"></i>
+					{:else}
+						<i class="fa-solid fa-fw fa-eye-slash"></i>
+					{/if}
 				</Button>
 			{/if}
 		</div>
@@ -223,7 +232,7 @@
 		</div>
 	</div>
 
-	<table class="challenges_list">
+	<table class="challenges_list mb-auto">
 		<thead>
 			<tr>
 				<th class="px-2"></th>
@@ -236,6 +245,11 @@
 		<tbody>
 			{#each challengesGroups as challengeGroup}
 				{@const main = challengeGroup.main}
+				{@const mainPlayerChallenge = playerData?.challenges?.challenges?.find(
+					(c: any) => c.challengeId == main.id
+				)}
+				{@const mainPlayerChallengeLevel =
+					mainPlayerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
 				<tr>
 					<td class="px-2"></td>
 					<td class="px-2"></td>
@@ -245,6 +259,17 @@
 							{main.description}
 						</Tooltip>
 					</td>
+					{#if playerData}
+						<td class="px-2 text-center"> </td>
+						<td>
+							<img
+								class="h-6 max-h-6 w-6 max-w-6"
+								src={`https://raw.communitydragon.org/latest/game/assets/challenges/config/${main.id}/tokens/${mainPlayerChallengeLevel}.png`}
+								alt={mainPlayerChallengeLevel}
+							/>
+						</td>
+						<td></td>
+					{/if}
 				</tr>
 				{#each challengeGroup.challenges as challenge}
 					{@const championsChallenge = getChampions([challenge])}
@@ -255,52 +280,83 @@
 						getChallengeRequirements(challenge) - championsSelectedChallenge.length,
 						0
 					)}
-					<tr class:text-amber-400={missingDots <= 0}>
-						<td class="px-2 pt-0.5 text-right"
-							><input
-								type="checkbox"
-								id={`challenge_cb_${challenge.id}`}
-								class="cursor-pointer"
-								bind:group={challengesSelected}
-								value={challenge}
-							/></td
-						>
-						<td class="px-2 text-right">
-							<label
-								for={`challenge_cb_${challenge.id}`}
-								class="cursor-pointer"
-								style="width:30px; display inline-block;"
+					{@const playerChallenge = playerData?.challenges?.challenges?.find(
+						(c: any) => c.challengeId == challenge.id
+					)}
+					{@const playerChallengeLevel = playerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
+					{@const playerChallengeValue = playerChallenge?.value ?? 0}
+					{@const threshold = challenge.thresholds.MASTER.value}
+					{@const showRow = showCompleted || playerChallengeValue < threshold}
+
+					{#if showRow}
+						<tr class:text-amber-400={missingDots <= 0}>
+							<td class="px-2 pt-0.5 text-right"
+								><input
+									type="checkbox"
+									id={`challenge_cb_${challenge.id}`}
+									class="cursor-pointer"
+									bind:group={challengesSelected}
+									value={challenge}
+								/></td
 							>
-								{getChampions([...challengesSelected, challenge]).length}
-							</label>
-						</td>
-						<td class="px-2 text-left">
-							<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer text-nowrap">
-								{challenge.name}
-							</label>
-						</td>
-						<td class="px-2 text-left">
-							<Tooltip text={helpText}>
-								{challenge.description}
-							</Tooltip>
-						</td>
-						<td class="px-2 text-left">
-							<div class="flex items-center">
-								{#each championsSelectedChallenge as championSelectedChallenge}
-									<div class="mx-0.5 h-[20px] w-[20px]">
-										<img
-											src={`/img/cache/${championSelectedChallenge?.image.full}`}
-											alt={championSelectedChallenge?.name}
-										/>
-									</div>
-								{/each}
-								{#each Array(missingDots) as i}
-									<div class="mx-0.5 h-[20px] w-[20px] p-[5px]">
-										<div class="v-full h-full rounded-full bg-white/50"></div>
-									</div>
-								{/each}
-							</div>
-						</td>
+							<td class="px-2 text-right">
+								<label
+									for={`challenge_cb_${challenge.id}`}
+									class="cursor-pointer"
+									style="width:30px; display inline-block;"
+								>
+									{getChampions([...challengesSelected, challenge]).length}
+								</label>
+							</td>
+							<td class="px-2 text-left">
+								<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer text-nowrap">
+									{challenge.name}
+								</label>
+							</td>
+							<td class="px-2 text-left">
+								<Tooltip text={helpText}>
+									{challenge.description}
+								</Tooltip>
+							</td>
+							<td class="px-2 text-left">
+								<div class="flex items-center">
+									{#each championsSelectedChallenge as championSelectedChallenge}
+										<div class="mx-0.5 h-[20px] w-[20px]">
+											<img
+												src={`/img/cache/${championSelectedChallenge?.image.full}`}
+												alt={championSelectedChallenge?.name}
+											/>
+										</div>
+									{/each}
+									{#each Array(missingDots) as i}
+										<div class="mx-0.5 h-[20px] w-[20px] p-[5px]">
+											<div class="v-full h-full rounded-full bg-white/50"></div>
+										</div>
+									{/each}
+								</div>
+							</td>
+
+							{#if playerData}
+								<td>
+									<img
+										class="h-6 max-h-6 w-6 max-w-6"
+										src={`https://raw.communitydragon.org/latest/game/assets/challenges/config/${challenge.id}/tokens/${playerChallengeLevel}.png`}
+										alt={playerChallengeLevel}
+									/>
+								</td>
+								<td class="px-2 text-center">
+									{#if playerChallengeValue >= threshold}
+										{playerChallengeValue}
+									{:else}
+										{playerChallengeValue} / {threshold}
+									{/if}
+								</td>
+							{/if}
+						</tr>
+					{/if}
+				{:else}
+					<tr>
+						<td>You've finished!</td>
 					</tr>
 				{/each}
 			{/each}

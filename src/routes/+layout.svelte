@@ -64,7 +64,7 @@
 
 <header>
 	<div class="bg_img"></div>
-	<nav class="mx-7 my-3 flex flex-wrap items-center justify-start gap-7">
+	<nav class="mx-7 my-3 flex flex-col items-center justify-start gap-7 md:flex-row">
 		<a href="/" aria-label="home">
 			<img src="/img/favicon.png" alt="logo" class="h-10" />
 		</a>
