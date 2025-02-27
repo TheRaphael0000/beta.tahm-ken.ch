@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { challengesSite } from '$lib/challenges';
 	import Tooltip from '$lib/components/Tooltip.svelte';
+	import { browser } from '$app/environment';
 
 	let multisearch: any = $state();
 	let order: Map<number, { completion: number; mae: number }> = $state(new Map());
@@ -26,20 +27,22 @@
 	});
 
 	$effect(() => {
-		const urlParams = page.url.searchParams;
-		const summoners = urlParams.get('summoners');
-		const region = urlParams.get('region');
+		if (browser) {
+			const urlParams = page.url.searchParams;
+			const summoners = urlParams.get('summoners');
+			const region = urlParams.get('region');
 
-		if (!summoners || !region) {
-			return;
+			if (!summoners || !region) {
+				return;
+			}
+
+			(async () => {
+				const response = await fetch(`/api/player_data/${region}/${summoners}?masteries=True`);
+				multisearch = await response.json();
+				order = computeOrder();
+				completion = computeCompletion();
+			})();
 		}
-
-		(async () => {
-			const response = await fetch(`/api/player_data/${region}/${summoners}?masteries=True`);
-			multisearch = await response.json();
-			order = computeOrder();
-			completion = computeCompletion();
-		})();
 	});
 
 	function computeOrder() {

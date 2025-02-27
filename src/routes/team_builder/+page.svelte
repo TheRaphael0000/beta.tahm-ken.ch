@@ -34,8 +34,10 @@
 	const championsOrdered = $derived(orderChampions(champions_filtered));
 	let playerData: any = $state(undefined);
 
-	summoner = page.url.searchParams.get('summoner')?.replace('-', '#') ?? '';
-	region = page.url.searchParams.get('region') ?? '';
+	if (browser) {
+		summoner = page.url.searchParams.get('summoner')?.replace('-', '#') ?? '';
+		region = page.url.searchParams.get('region') ?? '';
+	}
 
 	$effect(() => {
 		if (browser) {
@@ -47,31 +49,33 @@
 	});
 
 	$effect(() => {
-		const urlSummoner = page.url.searchParams.get('summoner') ?? '';
-		const urlRegion = page.url.searchParams.get('region') ?? '';
+		if (browser) {
+			const urlSummoner = page.url.searchParams.get('summoner') ?? '';
+			const urlRegion = page.url.searchParams.get('region') ?? '';
 
-		if (urlSummoner && urlRegion) {
-			(async () => {
-				const response = await fetch(`/api/player_data/${urlRegion}/${urlSummoner}`);
-				playerData = (await response.json()).at(0);
-				if (playerData) {
-					summoner = `${playerData?.account?.gameName}#${playerData?.account?.tagLine}`;
-					globalLevel = playerData.challenges.totalPoints.level.toLocaleLowerCase();
-					icon = playerData.summoner.profileIconId;
+			if (urlSummoner && urlRegion) {
+				(async () => {
+					const response = await fetch(`/api/player_data/${urlRegion}/${urlSummoner}`);
+					playerData = (await response.json()).at(0);
+					if (playerData) {
+						summoner = `${playerData?.account?.gameName}#${playerData?.account?.tagLine}`;
+						globalLevel = playerData.challenges.totalPoints.level.toLocaleLowerCase();
+						icon = playerData.summoner.profileIconId;
 
-					challengesCompleted = 0;
-					challengesTotal = 0;
-					for (let challenge of challengesSite) {
-						const summonerChallenge = playerData.challenges.challenges.find(
-							(c: any) => c.challengeId == challenge.id
-						);
-						const value = summonerChallenge?.value ?? 0;
-						const threshold = challenge.thresholds.MASTER.value;
-						challengesCompleted += Math.min(value, threshold);
-						challengesTotal += threshold;
+						challengesCompleted = 0;
+						challengesTotal = 0;
+						for (let challenge of challengesSite) {
+							const summonerChallenge = playerData.challenges.challenges.find(
+								(c: any) => c.challengeId == challenge.id
+							);
+							const value = summonerChallenge?.value ?? 0;
+							const threshold = challenge.thresholds.MASTER.value;
+							challengesCompleted += Math.min(value, threshold);
+							challengesTotal += threshold;
+						}
 					}
-				}
-			})();
+				})();
+			}
 		}
 	});
 
