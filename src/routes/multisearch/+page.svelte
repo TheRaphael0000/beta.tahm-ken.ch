@@ -38,16 +38,17 @@
 		event.preventDefault();
 		let paste = event.clipboardData.getData('text');
 
-		paste = parseJoinText(paste)
+		paste = parseJoinText(paste);
 
 		// handle selection
-		const selectionStart = area.selectionStart
-		const selectionEnd = area.selectionEnd
-		const currentValue = area.value
-		const modifiedValue = currentValue.substring(0, selectionStart) + paste + currentValue.substring(selectionEnd)
-		area.value = modifiedValue
-		const newPosition = selectionStart + paste.length
-		area.setSelectionRange(newPosition, newPosition)
+		const selectionStart = area.selectionStart;
+		const selectionEnd = area.selectionEnd;
+		const currentValue = area.value;
+		const modifiedValue =
+			currentValue.substring(0, selectionStart) + paste + currentValue.substring(selectionEnd);
+		area.value = modifiedValue;
+		const newPosition = selectionStart + paste.length;
+		area.setSelectionRange(newPosition, newPosition);
 	}
 </script>
 

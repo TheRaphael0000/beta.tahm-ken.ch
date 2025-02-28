@@ -3,9 +3,20 @@
 	import quotes from 'data/quotes.json';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
+	import ThemeSelector from './ThemeSelector.svelte';
+	import { browser } from '$app/environment';
 
 	let currentPath = $derived(page.url.pathname);
+	let background: string = $state(
+		browser ? (localStorage.getItem('background') ?? 'TahmKench_0.jpg') : ''
+	);
 	let { children } = $props();
+
+	$effect(() => {
+		if (background) {
+			localStorage.setItem('background', background);
+		}
+	});
 
 	let headerNav = [
 		{
@@ -63,19 +74,24 @@
 </svelte:head>
 
 <header>
-	<div class="bg_img"></div>
-	<nav class="mx-7 my-3 flex flex-col items-center justify-start gap-7 md:flex-row">
-		<a href="/" aria-label="home">
-			<img src="/img/favicon.png" alt="logo" class="h-10" />
-		</a>
-		{#each headerNav as link, i}
-			<!-- svelte-ignore a11y_accesskey -->
-			<a
-				class:border-b-1={currentPath === link.href}
-				href={link.href}
-				accesskey={(i + 1).toString()}>{link.text}</a
-			>
-		{/each}
+	<div class="bg_img" style:background-image={`url(/img/backgrounds/${background})`}></div>
+	<nav class="flex flex-col items-center justify-between md:flex-row">
+		<div class="mx-7 my-3 flex flex-col items-center gap-2 md:flex-row md:gap-7">
+			<a href="/" aria-label="home">
+				<img src="/img/favicon.png" alt="logo" class="h-10" />
+			</a>
+			{#each headerNav as link, i}
+				<!-- svelte-ignore a11y_accesskey -->
+				<a
+					class:border-b-1={currentPath === link.href}
+					href={link.href}
+					accesskey={(i + 1).toString()}>{link.text}</a
+				>
+			{/each}
+		</div>
+		<div class="mx-7 my-3 flex flex-col items-center gap-2 md:flex-row md:gap-7">
+			<ThemeSelector bind:background />
+		</div>
 	</nav>
 </header>
 
@@ -110,13 +126,12 @@
 
 <style>
 	.bg_img {
-		background-image: url('/img/tahm_kench/TahmKench_11.jpg');
 		position: fixed;
 		background-position: center;
 		background-size: cover;
 		width: 100%;
 		height: 100%;
-		filter: blur(3px) saturate(180%);
+		filter: blur(2px) saturate(200%);
 		transform: scale(1.2) scaleX(-1);
 		opacity: 0.2;
 		z-index: -1;
