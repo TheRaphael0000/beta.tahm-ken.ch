@@ -8,7 +8,7 @@
 
 	let currentPath = $derived(page.url.pathname);
 	let background: string = $state(
-		browser ? (localStorage.getItem('background') ?? 'TahmKench_0.jpg') : ''
+		browser ? (localStorage.getItem('background') ?? 'TahmKench_00.jpg') : ''
 	);
 	let { children } = $props();
 
