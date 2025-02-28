@@ -164,8 +164,8 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="team_builder px-6">
-	<div class="menu1 mr-auto">
-		<div class="my-2 flex gap-2">
+	<div class="col1">
+		<div class="my-2 flex w-full justify-center gap-3">
 			<form class="flex" onsubmit={search}>
 				<Select class="rounded-r-none" bind:value={region}>
 					{#each regions as region}
@@ -211,207 +211,209 @@
 				</Button>
 			{/if}
 		</div>
-	</div>
-	<div class="menu2 w-full">
-		<div class="my-2 flex justify-center gap-2">
-			<InputText
-				title="Search for champions, enter allows you to selected when only one champion matches the search"
-				placeholder="Search champion..."
-				oninput={filter}
-				onkeypress={filterKey}
-			/>
-			<!-- <Button
-			class="m-3"
-			title="Find compositions that satify the current selection (selected champions and challenges)."
-		>
-			<i class="fa-solid fa-wand-magic-sparkles"></i> Optimize selection
-		</Button> -->
-			<div class="flex items-center gap-3">
-				{#each Array.from(Array(5).keys()) as i}
-					{@const championSelected = championsSelected.at(i) ?? ''}
-					{@const champion = championsMap.get(championSelected)}
 
-					<div class={['h-10', 'w-10', champion == undefined ? 'p-[11px]' : '']}>
-						{#if champion == undefined}
-							<div class="v-full h-full rounded-full bg-white/50"></div>
-						{:else}
-							<button class="cursor-pointer" onclick={(e) => championClick(e, champion.id)}>
-								<img src={`/img/cache/${champion?.image.full}`} alt={champion.name} />
-							</button>
-						{/if}
-					</div>
-				{/each}
-			</div>
-			<Button title="Clear selections" onclick={clear}>
-				<i class="fa-solid fa-fw fa-trash"></i> Clear
-			</Button>
-			<!-- <Button class="m-3" title="Copy a link to your current selection to the clipboard">
-			<i class="fa-solid fa-share"></i> Share
-		</Button> -->
-		</div>
-	</div>
-
-	<table class="challenges_list mr-auto mb-auto">
-		<thead>
-			<tr>
-				<th class="px-2"></th>
-				<th class="px-2 text-right">&nbsp;&nbsp;#</th>
-				<th class="px-2 text-left">Challenges</th>
-				<th class="px-2"></th>
-				<th class="px-2 text-left">Selection</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each challengesGroups as challengeGroup}
-				{@const main = challengeGroup.main}
-				{@const mainPlayerChallenge = playerChallengesMap?.get(main?.id)}
-				{@const mainPlayerChallengeLevel =
-					mainPlayerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
+		<table class="mb-auto w-full">
+			<thead>
 				<tr>
-					<td class="px-2"></td>
-					<td class="px-2"></td>
-					<th class="px-2 text-left">{main.name}</th>
-					<td class="px-2 text-left">
-						<Tooltip text={helpText}>
-							{main.description}
-						</Tooltip>
-					</td>
-					{#if playerData}
-						<td class="px-2 text-center"> </td>
-						<td>
-							<img
-								class="h-6 max-h-6 w-6 max-w-6"
-								src={`https://raw.communitydragon.org/latest/game/assets/challenges/config/${main.id}/tokens/${mainPlayerChallengeLevel}.png`}
-								alt={mainPlayerChallengeLevel}
-							/>
-						</td>
-						<td></td>
-					{/if}
+					<th class="px-2"></th>
+					<th class="px-2 text-right">&nbsp;&nbsp;#</th>
+					<th class="px-2 text-left">Challenges</th>
+					<th class="px-2"></th>
+					<th class="px-2 text-left">Selection</th>
 				</tr>
-				{#each challengeGroup.challenges as challenge}
-					{@const championsChallenge = getChampions([challenge])}
-					{@const championsSelectedChallenge = championsChallenge.filter((champion: any) =>
-						championsSelected.includes(champion.id)
-					)}
-					{@const missingDots = Math.max(
-						getChallengeRequirements(challenge) - championsSelectedChallenge.length,
-						0
-					)}
-					{@const playerChallenge = playerChallengesMap?.get(challenge?.id)}
-					{@const playerChallengeLevel = playerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
-					{@const playerChallengeValue = playerChallenge?.value ?? 0}
-					{@const threshold = challenge.thresholds.MASTER.value}
-					{@const showRow = showCompleted || playerChallengeValue < threshold}
-
-					{#if showRow}
-						<tr class:text-amber-400={missingDots <= 0}>
-							<td class="px-2 pt-0.5 text-right"
-								><input
-									type="checkbox"
-									id={`challenge_cb_${challenge.id}`}
-									class="cursor-pointer"
-									bind:group={challengesSelected}
-									value={challenge}
-								/></td
-							>
-							<td class="px-2 text-right">
-								<label
-									for={`challenge_cb_${challenge.id}`}
-									class="cursor-pointer"
-									style="width:30px; display inline-block;"
-								>
-									{getChampions([...challengesSelected, challenge]).length}
-								</label>
-							</td>
-							<td class="px-2 text-left">
-								<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer text-nowrap">
-									{challenge.name}
-								</label>
-							</td>
-							<td class="px-2 text-left">
-								<Tooltip text={helpText}>
-									{challenge.description}
-								</Tooltip>
-							</td>
-							<td class="px-2 text-left">
-								<div class="flex items-center">
-									{#each championsSelectedChallenge as championSelectedChallenge}
-										<div class="mx-0.5 h-[20px] w-[20px]">
-											<img
-												src={`/img/cache/${championSelectedChallenge?.image.full}`}
-												alt={championSelectedChallenge?.name}
-											/>
-										</div>
-									{/each}
-									{#each Array(missingDots) as i}
-										<div class="mx-0.5 h-[20px] w-[20px] p-[5px]">
-											<div class="v-full h-full rounded-full bg-white/50"></div>
-										</div>
-									{/each}
-								</div>
-							</td>
-
-							{#if playerData}
-								<td>
-									<img
-										class="h-6 max-h-6 w-6 max-w-6"
-										src={`https://raw.communitydragon.org/latest/game/assets/challenges/config/${challenge.id}/tokens/${playerChallengeLevel}.png`}
-										alt={playerChallengeLevel}
-									/>
-								</td>
-								<td class="px-2 text-center">
-									{#if playerChallengeValue >= threshold}
-										{playerChallengeValue}
-									{:else}
-										{playerChallengeValue} / {threshold}
-									{/if}
-								</td>
-							{/if}
-						</tr>
-					{/if}
-				{:else}
+			</thead>
+			<tbody>
+				{#each challengesGroups as challengeGroup}
+					{@const main = challengeGroup.main}
+					{@const mainPlayerChallenge = playerChallengesMap?.get(main?.id)}
+					{@const mainPlayerChallengeLevel =
+						mainPlayerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
 					<tr>
-						<td>You've finished!</td>
+						<td class="px-2"></td>
+						<td class="px-2"></td>
+						<th class="px-2 text-left">{main.name}</th>
+						<td class="px-2 text-left">
+							<Tooltip text={helpText}>
+								{main.description}
+							</Tooltip>
+						</td>
+						{#if playerData}
+							<td class="px-2 text-center"> </td>
+							<td>
+								<img
+									class="h-6 max-h-6 w-6 max-w-6"
+									src={`https://raw.communitydragon.org/latest/game/assets/challenges/config/${main.id}/tokens/${mainPlayerChallengeLevel}.png`}
+									alt={mainPlayerChallengeLevel}
+								/>
+							</td>
+							<td></td>
+						{/if}
 					</tr>
-				{/each}
-			{/each}
-		</tbody>
-	</table>
+					{#each challengeGroup.challenges as challenge}
+						{@const championsChallenge = getChampions([challenge])}
+						{@const championsSelectedChallenge = championsChallenge.filter((champion: any) =>
+							championsSelected.includes(champion.id)
+						)}
+						{@const missingDots = Math.max(
+							getChallengeRequirements(challenge) - championsSelectedChallenge.length,
+							0
+						)}
+						{@const playerChallenge = playerChallengesMap?.get(challenge?.id)}
+						{@const playerChallengeLevel = playerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
+						{@const playerChallengeValue = playerChallenge?.value ?? 0}
+						{@const threshold = challenge.thresholds.MASTER.value}
+						{@const showRow = showCompleted || playerChallengeValue < threshold}
 
-	<div class="champions_pool flex w-full flex-wrap content-start justify-center">
-		{#each championsOrdered as champion}
-			{@const playerChampion = playerMasteriesMap?.get(champion?.key)}
-			{@const level = playerChampion?.championLevel}
-			<Tooltip>
-				{#snippet text()}
-					<button
-						class="relative m-1 ring-amber-400 transition-all duration-75"
-						class:ring-2={championsSelected.includes(champion.id)}
-						class:cursor-pointer={canAdd || championsSelected.includes(champion.id)}
-						onclick={(e) => championClick(e, champion.id)}
-						class:opacity-35={!championsKeyForSelectedChallenges.includes(champion.key) &&
-							championsKeyForSelectedChallenges.length != 0}
-					>
-						<img src={`/img/cache/${champion.image.full}`} alt={champion.name} class="w-16" />
-						<div
-							class={[
-								'absolute right-0 bottom-0 rounded-tl-[50%] px-2 pt-0.5 text-sm font-bold',
-								{ 'bg-pink-800/80': level >= 10 },
-								{ 'bg-yellow-700/80': level == 9 },
-								{ 'bg-fuchsia-800/80': level == 8 },
-								{ 'bg-blue-800/80': level == 7 },
-								{ 'bg-green-600/80': level == 6 },
-								{ 'bg-sky-700/80': level == 5 },
-								{ 'bg-black/80': level < 5 }
-							]}
-						>
-							{level}
+						{#if showRow}
+							<tr class:text-amber-400={missingDots <= 0}>
+								<td class="px-2 pt-0.5 text-right"
+									><input
+										type="checkbox"
+										id={`challenge_cb_${challenge.id}`}
+										class="cursor-pointer"
+										bind:group={challengesSelected}
+										value={challenge}
+									/></td
+								>
+								<td class="px-2 text-right">
+									<label
+										for={`challenge_cb_${challenge.id}`}
+										class="cursor-pointer"
+										style="width:30px; display inline-block;"
+									>
+										{getChampions([...challengesSelected, challenge]).length}
+									</label>
+								</td>
+								<td class="px-2 text-left">
+									<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer text-nowrap">
+										{challenge.name}
+									</label>
+								</td>
+								<td class="px-2 text-left">
+									<Tooltip text={helpText}>
+										{challenge.description}
+									</Tooltip>
+								</td>
+								<td class="px-2 text-left">
+									<div class="flex items-center">
+										{#each championsSelectedChallenge as championSelectedChallenge}
+											<div class="mx-0.5 h-[20px] w-[20px]">
+												<img
+													src={`/img/cache/${championSelectedChallenge?.image.full}`}
+													alt={championSelectedChallenge?.name}
+												/>
+											</div>
+										{/each}
+										{#each Array(missingDots) as i}
+											<div class="mx-0.5 h-[20px] w-[20px] p-[5px]">
+												<div class="v-full h-full rounded-full bg-white/50"></div>
+											</div>
+										{/each}
+									</div>
+								</td>
+
+								{#if playerData}
+									<td>
+										<img
+											class="h-6 max-h-6 w-6 max-w-6"
+											src={`https://raw.communitydragon.org/latest/game/assets/challenges/config/${challenge.id}/tokens/${playerChallengeLevel}.png`}
+											alt={playerChallengeLevel}
+										/>
+									</td>
+									<td class="px-2 text-center">
+										{#if playerChallengeValue >= threshold}
+											{playerChallengeValue}
+										{:else}
+											{playerChallengeValue} / {threshold}
+										{/if}
+									</td>
+								{/if}
+							</tr>
+						{/if}
+					{:else}
+						<tr>
+							<td>You've finished!</td>
+						</tr>
+					{/each}
+				{/each}
+			</tbody>
+		</table>
+	</div>
+	<div class="col2">
+		<div class="w-full">
+			<div class="my-2 flex justify-center gap-2">
+				<InputText
+					title="Search for champions, enter allows you to selected when only one champion matches the search"
+					placeholder="Search champion..."
+					oninput={filter}
+					onkeypress={filterKey}
+				/>
+				<!-- <Button
+					class="m-3"
+					title="Find compositions that satify the current selection (selected champions and challenges)."
+				>
+					<i class="fa-solid fa-wand-magic-sparkles"></i> Optimize selection
+				</Button> -->
+				<div class="flex items-center gap-3">
+					{#each Array.from(Array(5).keys()) as i}
+						{@const championSelected = championsSelected.at(i) ?? ''}
+						{@const champion = championsMap.get(championSelected)}
+
+						<div class={['h-10', 'w-10', champion == undefined ? 'p-[11px]' : '']}>
+							{#if champion == undefined}
+								<div class="v-full h-full rounded-full bg-white/50"></div>
+							{:else}
+								<button class="cursor-pointer" onclick={(e) => championClick(e, champion.id)}>
+									<img src={`/img/cache/${champion?.image.full}`} alt={champion.name} />
+								</button>
+							{/if}
 						</div>
-					</button>
-				{/snippet}
-				{champion.name}
-			</Tooltip>
-		{/each}
+					{/each}
+				</div>
+				<Button title="Clear selections" onclick={clear}>
+					<i class="fa-solid fa-fw fa-trash"></i> Clear
+				</Button>
+				<!-- <Button class="m-3" title="Copy a link to your current selection to the clipboard">
+					<i class="fa-solid fa-share"></i> Share
+				</Button> -->
+			</div>
+		</div>
+
+		<div class="flex w-full flex-wrap content-start justify-center">
+			{#each championsOrdered as champion}
+				{@const playerChampion = playerMasteriesMap?.get(champion?.key)}
+				{@const level = playerChampion?.championLevel}
+				<Tooltip>
+					{#snippet text()}
+						<button
+							class="relative m-1 ring-amber-400 transition-all duration-75"
+							class:ring-2={championsSelected.includes(champion.id)}
+							class:cursor-pointer={canAdd || championsSelected.includes(champion.id)}
+							onclick={(e) => championClick(e, champion.id)}
+							class:opacity-35={!championsKeyForSelectedChallenges.includes(champion.key) &&
+								championsKeyForSelectedChallenges.length != 0}
+						>
+							<img src={`/img/cache/${champion.image.full}`} alt={champion.name} class="w-16" />
+							<div
+								class={[
+									'absolute right-0 bottom-0 rounded-tl-[50%] px-2 pt-0.5 text-sm font-bold',
+									{ 'bg-pink-800/80': level >= 10 },
+									{ 'bg-yellow-700/80': level == 9 },
+									{ 'bg-fuchsia-800/80': level == 8 },
+									{ 'bg-blue-800/80': level == 7 },
+									{ 'bg-green-600/80': level == 6 },
+									{ 'bg-sky-700/80': level == 5 },
+									{ 'bg-black/80': level < 5 }
+								]}
+							>
+								{level}
+							</div>
+						</button>
+					{/snippet}
+					{champion.name}
+				</Tooltip>
+			{/each}
+		</div>
 	</div>
 </div>
 
@@ -419,39 +421,25 @@
 	.team_builder {
 		display: grid;
 		gap: 5px;
-		grid-template-columns: auto 1fr;
-		grid-template-areas:
-			'menu1 menu2'
-			'chall pool';
+		grid-template-columns: auto auto;
+		grid-template-areas: 'col1 col2';
 	}
 
 	@media screen and (max-width: 1000px) {
-		.menu1 {
+		.col1 {
 			grid-area: 1 / span 2 !important;
 		}
-		.menu2 {
+		.col2 {
 			grid-area: 2 / span 2 !important;
-		}
-		.challenges_list {
-			grid-area: 3 / span 2 !important;
-		}
-		.champions_pool {
-			grid-area: 4 / span 2 !important;
 		}
 	}
 
 	@media screen and (min-width: 1000px) {
-		.menu1 {
-			grid-area: menu1;
+		.col1 {
+			grid-area: col1;
 		}
-		.menu2 {
-			grid-area: menu2;
-		}
-		.challenges_list {
-			grid-area: chall;
-		}
-		.champions_pool {
-			grid-area: pool;
+		.col2 {
+			grid-area: col2;
 		}
 	}
 </style>
