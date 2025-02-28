@@ -41,8 +41,6 @@
 	const canAdd = $derived(championsSelected.length < 5);
 	const championsOrdered = $derived(orderChampions(champions_filtered));
 
-	$inspect(playerChallengesMap);
-
 	if (browser) {
 		summoner = page.url.searchParams.get('summoner')?.replace('-', '#') ?? '';
 		region = page.url.searchParams.get('region') ?? '';
@@ -92,29 +90,31 @@
 	function orderChampions(champions: any) {
 		// order by name first
 		let order = champions.toSorted((a: any, b: any) => {
-			return a.name.localeCompare(b.name);
-		});
+			if (championsKeyForSelectedChallenges.length > 0) {
+				const challengeA = championsKeyForSelectedChallenges.includes(a?.key) ? 1 : 0;
+				const challengeB = championsKeyForSelectedChallenges.includes(b?.key) ? 1 : 0;
+				const challengeDiff = challengeB - challengeA;
+				if (challengeDiff != 0) return challengeDiff;
+			}
 
-		if (playerMasteriesMap) {
-			order = champions.toSorted((a: any, b: any) => {
+			if (playerMasteriesMap.size > 0) {
 				const playerChampionA = playerMasteriesMap?.get(a?.key);
 				const playerChampionB = playerMasteriesMap?.get(b?.key);
 
-				if (playerChampionA?.championLevel == playerChampionB?.championLevel) {
-					return playerChampionB?.championPoints - playerChampionA?.championPoints;
-				}
-				return playerChampionB?.championLevel - playerChampionA?.championLevel;
-			});
-		}
+				const levelA = playerChampionA?.championLevel ?? 0;
+				const levelB = playerChampionB?.championLevel ?? 0;
+				const levelDiff = levelB - levelA;
+				if (levelDiff != 0) return levelDiff;
 
-		// then by selected challenges
-		if (championsKeyForSelectedChallenges.length > 0) {
-			order.sort((a: any, b: any) => {
-				const ai = championsKeyForSelectedChallenges.includes(a?.key) ? 1 : 0;
-				const bi = championsKeyForSelectedChallenges.includes(b?.key) ? 1 : 0;
-				return bi - ai;
-			});
-		}
+				const pointA = playerChampionA?.championPoints ?? 0;
+				const pointB = playerChampionB?.championPoints ?? 0;
+				const pointDiff = pointB - pointA;
+
+				if (pointDiff != 0) return pointDiff;
+			}
+
+			return a.name.localeCompare(b.name);
+		});
 
 		return order;
 	}
