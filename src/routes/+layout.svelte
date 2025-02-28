@@ -74,7 +74,10 @@
 </svelte:head>
 
 <header>
-	<div class="bg_img" style:background-image={`url(/img/backgrounds/${background})`}></div>
+	<div
+		class="bg_img"
+		style:background-image={background ? `url(/img/backgrounds/${background})` : ''}
+	></div>
 	<nav class="flex flex-col items-center justify-between md:flex-row">
 		<div class="mx-7 my-3 flex flex-col items-center gap-2 md:flex-row md:gap-7">
 			<a href="/" aria-label="home">
