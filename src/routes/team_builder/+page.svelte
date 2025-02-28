@@ -31,9 +31,17 @@
 	const championsKeyForSelectedChallenges = $derived(
 		getChampions(challengesSelected).map((c) => c.key)
 	);
+	let playerData: any = $state(undefined);
+	const playerMasteriesMap: Map<string, any> = $derived.by(
+		() => new Map(playerData?.champion_masteries?.map((c: any) => [c?.championId?.toString(), c]))
+	);
+	const playerChallengesMap: Map<number, any> = $derived.by(
+		() => new Map(playerData?.challenges?.challenges?.map((c: any) => [c?.challengeId, c]))
+	);
 	const canAdd = $derived(championsSelected.length < 5);
 	const championsOrdered = $derived(orderChampions(champions_filtered));
-	let playerData: any = $state(undefined);
+
+	$inspect(playerChallengesMap);
 
 	if (browser) {
 		summoner = page.url.searchParams.get('summoner')?.replace('-', '#') ?? '';
@@ -65,9 +73,7 @@
 						challengesCompleted = 0;
 						challengesTotal = 0;
 						for (let challenge of challengesSite) {
-							const summonerChallenge = playerData.challenges.challenges.find(
-								(c: any) => c.challengeId == challenge.id
-							);
+							const summonerChallenge = playerChallengesMap?.get(challenge?.id);
 							const value = summonerChallenge?.value ?? 0;
 							const threshold = challenge.thresholds.MASTER.value;
 							challengesCompleted += Math.min(value, threshold);
@@ -89,6 +95,18 @@
 			return a.name.localeCompare(b.name);
 		});
 
+		if (playerMasteriesMap) {
+			order = champions.toSorted((a: any, b: any) => {
+				const playerChampionA = playerMasteriesMap?.get(a?.key);
+				const playerChampionB = playerMasteriesMap?.get(b?.key);
+
+				if (playerChampionA?.championLevel == playerChampionB?.championLevel) {
+					return playerChampionB?.championPoints - playerChampionA?.championPoints;
+				}
+				return playerChampionB?.championLevel - playerChampionA?.championLevel;
+			});
+		}
+
 		// then by selected challenges
 		if (championsKeyForSelectedChallenges.length > 0) {
 			order.sort((a: any, b: any) => {
@@ -109,7 +127,6 @@
 	}
 
 	function filterKey(event: any) {
-		console.log(event);
 		if (event.key == 'Enter') {
 			event.target.value = '';
 			if (champions.length == 1) championClick(event, champions[0].id);
@@ -247,9 +264,7 @@
 		<tbody>
 			{#each challengesGroups as challengeGroup}
 				{@const main = challengeGroup.main}
-				{@const mainPlayerChallenge = playerData?.challenges?.challenges?.find(
-					(c: any) => c.challengeId == main.id
-				)}
+				{@const mainPlayerChallenge = playerChallengesMap?.get(main?.id)}
 				{@const mainPlayerChallengeLevel =
 					mainPlayerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
 				<tr>
@@ -282,9 +297,7 @@
 						getChallengeRequirements(challenge) - championsSelectedChallenge.length,
 						0
 					)}
-					{@const playerChallenge = playerData?.challenges?.challenges?.find(
-						(c: any) => c.challengeId == challenge.id
-					)}
+					{@const playerChallenge = playerChallengesMap?.get(challenge?.id)}
 					{@const playerChallengeLevel = playerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
 					{@const playerChallengeValue = playerChallenge?.value ?? 0}
 					{@const threshold = challenge.thresholds.MASTER.value}
@@ -367,10 +380,12 @@
 
 	<div class="champions_pool flex w-full flex-wrap content-start justify-center">
 		{#each championsOrdered as champion}
+			{@const playerChampion = playerMasteriesMap?.get(champion?.key)}
+			{@const level = playerChampion?.championLevel}
 			<Tooltip>
 				{#snippet text()}
 					<button
-						class="m-1 ring-amber-400 transition-all duration-75"
+						class="relative m-1 ring-amber-400 transition-all duration-75"
 						class:ring-2={championsSelected.includes(champion.id)}
 						class:cursor-pointer={canAdd || championsSelected.includes(champion.id)}
 						onclick={(e) => championClick(e, champion.id)}
@@ -378,6 +393,20 @@
 							championsKeyForSelectedChallenges.length != 0}
 					>
 						<img src={`/img/cache/${champion.image.full}`} alt={champion.name} class="w-16" />
+						<div
+							class={[
+								'absolute right-0 bottom-0 rounded-tl-[50%] px-2 pt-0.5 text-sm font-bold',
+								{ 'bg-pink-800/80': level >= 10 },
+								{ 'bg-yellow-700/80': level == 9 },
+								{ 'bg-fuchsia-800/80': level == 8 },
+								{ 'bg-blue-800/80': level == 7 },
+								{ 'bg-green-600/80': level == 6 },
+								{ 'bg-sky-700/80': level == 5 },
+								{ 'bg-black/80': level < 5 }
+							]}
+						>
+							{level}
+						</div>
 					</button>
 				{/snippet}
 				{champion.name}

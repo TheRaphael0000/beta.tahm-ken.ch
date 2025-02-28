@@ -37,7 +37,7 @@
 			}
 
 			(async () => {
-				const response = await fetch(`/api/player_data/${region}/${summoners}?masteries=True`);
+				const response = await fetch(`/api/player_data/${region}/${summoners}`);
 				multisearch = await response.json();
 				order = computeOrder();
 				completion = computeCompletion();
