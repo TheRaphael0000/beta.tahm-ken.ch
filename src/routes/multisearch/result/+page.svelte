@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { challengesSite } from '$lib/challenges';
+	import { championsMapKey, challengesSite } from '$lib/challenges';
 	import Tooltip from '$lib/components/Tooltip.svelte';
 	import { browser } from '$app/environment';
+	import HelpText from '$lib/components/HelpText.svelte';
 
 	let multisearch: any = $state();
 	let order: Map<number, { completion: number; mae: number }> = $state(new Map());
 	let completion: Map<string, number> = $state(new Map());
+	let showMasteries: boolean = $state(true);
 
 	let orderedMultiSearch = $derived.by(() => {
 		return multisearch?.toSorted((a: any, b: any) => {
@@ -91,11 +93,18 @@
 
 <p><i>Hover to see the challenge name</i></p>
 
+<p class="text-right">
+	<label>
+		Show masteries
+		<input type="checkbox" bind:checked={showMasteries} />
+	</label>
+</p>
+
 <table>
 	<thead>
 		<tr>
 			<th class="py-2 text-left" colspan="4">Summoners</th>
-			<th class="py-2 text-left" colspan="9999">Challenges</th>
+			<th class="py-2 text-left">Challenges</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -104,6 +113,8 @@
 			{@const challenges = summoner.challenges}
 			{@const globalLevel = challenges.totalPoints.level.toLocaleLowerCase()}
 			{@const icon = summoner.summoner.profileIconId}
+			{@const championMasteries = summoner.champion_masteries
+				.toSorted((c: any) => -c.championLevel)}
 
 			<tr>
 				<td>
@@ -158,13 +169,54 @@
 					{/each}
 				</td>
 			</tr>
+
+			{#if showMasteries}
+				{#each Array(3) as a, i}
+					<tr>
+						<td colspan="4"></td>
+
+						<td class="flex flex-row flex-wrap">
+							{#each ordredChallenges as challenge}
+								{@const hasChamps = challenge.availableIds.length > 0}
+								{@const championMasteriesChallenge = championMasteries.filter((c: any) =>
+									hasChamps ? challenge.availableIds.includes(c.championId) : championsMapKey.keys()
+								)}
+								{@const masteries = championMasteriesChallenge.at(i)}
+								{@const championId = masteries?.championId?.toString()}
+								{@const champion = championsMapKey?.get(championId)}
+								{@const level = masteries?.championLevel}
+								<div class="relative h-9 max-h-9 w-9 max-w-9 text-center">
+									{#if champion}
+										<img src={`/img/cache/${champion?.image?.full}`} alt={champion?.name} />
+										<div
+											class={[
+												'absolute right-0 bottom-0 rounded-tl-[50%] bg-black/50 px-1 pt-0.5 text-xs font-bold'
+											]}
+										>
+											{level}
+										</div>
+									{/if}
+								</div>
+							{/each}
+						</td>
+					</tr>
+				{/each}
+			{/if}
 		{/each}
 		<tr class="h-3 border-b-1"> </tr>
 		<tr>
-			<td class="py-2 italic" colspan="4">Completion</td>
+			<td class="py-2 italic" colspan="4">
+				Completion
+				<Tooltip>
+					{#snippet text()}
+						<HelpText>?</HelpText>
+					{/snippet}
+					Number of players who completed the challenge.
+				</Tooltip>
+			</td>
 
 			<td class="flex flex-row flex-wrap">
-				{#each challengesSite as challenge}
+				{#each ordredChallenges as challenge}
 					<div class="h-9 max-h-9 w-9 max-w-9 text-center">
 						{order.get(challenge.id)?.completion.toFixed(0)}
 					</div>
@@ -172,9 +224,17 @@
 			</td>
 		</tr>
 		<tr>
-			<td class="py-2 italic" colspan="4">MAE</td>
+			<td class="py-2 italic" colspan="4"
+				>MAE
+				<Tooltip>
+					{#snippet text()}
+						<HelpText>?</HelpText>
+					{/snippet}
+					Mean absolute error: The average missing challenges to master.
+				</Tooltip>
+			</td>
 			<td class="flex flex-row flex-wrap">
-				{#each challengesSite as challenge}
+				{#each ordredChallenges as challenge}
 					<div class="h-9 max-h-9 w-9 max-w-9 text-center">
 						{order.get(challenge.id)?.mae.toFixed(1)}
 					</div>

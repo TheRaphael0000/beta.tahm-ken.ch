@@ -8,8 +8,26 @@
 	import { parseJoinText } from '$lib/utils';
 
 	let summoners: string = $state('');
+	let summonerClean = $derived.by(() => {
+		return [
+			...new Set(
+				summoners
+					.toLocaleLowerCase()
+					.replaceAll('#', '-')
+					.split('\n')
+					.filter((s) => s.length > 0)
+			)
+		];
+	});
 	let region: string = $state('');
 	let donatorsStr: string = $state('');
+	let error: string = $derived.by(() => {
+		if (summonerClean.length > 7)
+			return `You can search only up to 7 different summoners at a time (${summonerClean.length} entered)`;
+
+		if (summonerClean.some((s) => !s.includes('-'))) return `All summoners must include a #tag`;
+		return '';
+	});
 
 	$effect(() => {
 		if (browser) {
@@ -28,8 +46,7 @@
 	});
 
 	function search() {
-		let cleanSummoners = summoners.replace('#', '-').replaceAll('\n', ',');
-		let url = `/multisearch/result?region=${region}&summoners=${cleanSummoners}`;
+		let url = `/multisearch/result?region=${region}&summoners=${summonerClean.join(',')}`;
 		goto(url);
 	}
 
@@ -49,6 +66,8 @@
 		area.value = modifiedValue;
 		const newPosition = selectionStart + paste.length;
 		area.setSelectionRange(newPosition, newPosition);
+
+		summoners = area.value;
 	}
 </script>
 
@@ -81,7 +100,10 @@
 </label>
 
 <p>
-	<Button onclick={search}>Search</Button>
+	<Button onclick={search} disabled={Boolean(error)}>Search</Button>
+	<span class="text-red-400">
+		{error}
+	</span>
 </p>
 
 <div class="mt-2 text-gray-500" style="font-size:0.9em;">

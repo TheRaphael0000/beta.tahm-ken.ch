@@ -11,7 +11,7 @@
 	}
 </script>
 
-<div onmouseenter={handleMouseEnter} onmouseleave={handleMouseLeave} role="tooltip">
+<span onmouseenter={handleMouseEnter} onmouseleave={handleMouseLeave} role="tooltip">
 	{@render text()}
 
 	{#if visible}
@@ -19,4 +19,4 @@
 			{@render children()}
 		</div>
 	{/if}
-</div>
+</span>

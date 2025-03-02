@@ -16,6 +16,7 @@ export const challengesRanks = [
 ];
 export const champions = Object.entries(champions_json.data).map((c) => c[1]);
 export const championsMap = new Map(Object.entries(champions_json.data));
+export const championsMapKey = new Map(Object.entries(champions_json.data).map(c => [c[1].key, c[1]]))
 
 export const challenges = Object.entries(challenges_json).map((c) => c[1]);
 
