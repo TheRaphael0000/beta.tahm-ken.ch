@@ -16,13 +16,13 @@
 	import HelpText from '$lib/components/HelpText.svelte';
 	import Pill from '$lib/components/Pill.svelte';
 
-	let champions_filtered = $state([...champions]);
 	const championsSelected: string[] = $state([]);
 	let challengesSelected: any[] = $state([]);
 	let summoner: string = $state('');
 	let region: string = $state('');
 	let icon: string = $state('');
 	let globalLevel: string = $state('');
+	let championFilter: string = $state('');
 
 	let challengesCompleted: number = $state(0);
 	let challengesTotal: number = $state(0);
@@ -39,7 +39,12 @@
 		() => new Map(playerData?.challenges?.challenges?.map((c: any) => [c?.challengeId, c]))
 	);
 	const canAdd = $derived(championsSelected.length < 5);
-	const championsOrdered = $derived(orderChampions(champions_filtered));
+	let championsFiltered = $derived.by(() => {
+		return champions.filter((c) =>
+			c.name.toLocaleLowerCase().includes(championFilter?.toLocaleLowerCase())
+		);
+	});
+	const championsOrdered = $derived(orderChampions(championsFiltered));
 
 	if (browser) {
 		summoner = page.url.searchParams.get('summoner')?.replace('-', '#') ?? '';
@@ -119,19 +124,11 @@
 		return order;
 	}
 
-	function filter(event: any) {
-		const value = event.target.value as string;
-		champions_filtered = champions.filter((c) =>
-			c.name.toLocaleLowerCase().includes(value?.toLocaleLowerCase())
-		);
-	}
-
 	function filterKey(event: any) {
-		if (event.key == 'Enter') {
-			event.target.value = '';
-			if (champions.length == 1) championClick(event, champions[0].id);
+		if (event.key == 'Enter' && championsFiltered.length == 1) {
+			championClick(undefined, championsFiltered?.at(0)?.id ?? '');
+			championFilter = '';
 		}
-		filter(event);
 	}
 
 	function championClick(event: any, id: string) {
@@ -345,7 +342,7 @@
 				<InputText
 					title="Search for champions, enter allows you to selected when only one champion matches the search"
 					placeholder="Search champion..."
-					oninput={filter}
+					bind:value={championFilter}
 					onkeypress={filterKey}
 				/>
 				<!-- <Button
