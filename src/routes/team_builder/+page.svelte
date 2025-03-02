@@ -26,7 +26,7 @@
 
 	let challengesCompleted: number = $state(0);
 	let challengesTotal: number = $state(0);
-	let showCompleted: boolean = $state(false);
+	let showCompleted: boolean = $state(true);
 
 	const championsKeyForSelectedChallenges = $derived(
 		getChampions(challengesSelected).map((c) => c.key)

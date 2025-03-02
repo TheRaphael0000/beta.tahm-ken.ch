@@ -8,7 +8,7 @@
 	let multisearch: any = $state();
 	let order: Map<number, { completion: number; mae: number }> = $state(new Map());
 	let completion: Map<string, number> = $state(new Map());
-	let showMasteries: boolean = $state(true);
+	let showMasteries: boolean = $state(false);
 
 	let orderedMultiSearch = $derived.by(() => {
 		return multisearch?.toSorted((a: any, b: any) => {
