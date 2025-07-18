@@ -418,7 +418,7 @@
 	.team_builder {
 		display: grid;
 		gap: 5px;
-		grid-template-columns: auto auto;
+		grid-template-columns: 600px auto;
 		grid-template-areas: 'col1 col2';
 	}
 
