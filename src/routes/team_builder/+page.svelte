@@ -54,7 +54,7 @@
 	$effect(() => {
 		if (browser) {
 			if (region === '') {
-				region = localStorage.getItem('region') || '';
+				region = localStorage.getItem('region') || 'EUW1'; // set default region to EUW1 rather than none
 			}
 			localStorage.setItem('region', region);
 		}
@@ -425,7 +425,7 @@
 	.team_builder {
 		display: grid;
 		gap: 5px;
-		grid-template-columns: auto auto;
+		grid-template-columns: 652px auto;
 		grid-template-areas: 'col1 col2';
 	}
 
