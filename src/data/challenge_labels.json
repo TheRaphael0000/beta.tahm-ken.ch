@@ -1,122 +1,98 @@
 [
 	{
 		"id": 303401,
-		"label": "Global",
-		"qte": 3
+		"label": "Global"
 	},
 	{
 		"id": 303402,
-		"label": "Ultimate AOE",
-		"qte": 3
+		"label": "Ultimate AOE"
 	},
 	{
 		"id": 303403,
-		"label": "Ally Shield/Heal",
-		"qte": 3
+		"label": "Ally Shield/Heal"
 	},
 	{
 		"id": 303404,
-		"label": "Revive/Immunity",
-		"qte": 3
+		"label": "Revive/Immunity"
 	},
 	{
 		"id": 303405,
-		"label": "Stealth",
-		"qte": 3
+		"label": "Stealth"
 	},
 	{
 		"id": 303406,
-		"label": "Poke",
-		"qte": 3
+		"label": "Poke"
 	},
 	{
 		"id": 303407,
-		"label": "Summoner",
-		"qte": 5
+		"label": "Summoner"
 	},
 	{
 		"id": 303409,
-		"label": "Displacements",
-		"qte": 3
+		"label": "Displacements"
 	},
 	{
 		"id": 303410,
-		"label": "Trap",
-		"qte": 3
+		"label": "Trap"
 	},
 	{
 		"id": 303411,
-		"label": "Terrain",
-		"qte": 3
+		"label": "Terrain"
 	},
 	{
 		"id": 303412,
-		"label": "Crowd Controls",
-		"qte": 3
+		"label": "Crowd Controls"
 	},
 	{
 		"id": 303501,
-		"qte": 5,
 		"label": "Bandle City"
 	},
 	{
 		"id": 303502,
-		"qte": 5,
 		"label": "Bilgewater"
 	},
 	{
 		"id": 303503,
-		"qte": 5,
 		"label": "Demacia"
 	},
 	{
 		"id": 303504,
-		"qte": 5,
 		"label": "Freljord"
 	},
 	{
 		"id": 303505,
-		"qte": 5,
 		"label": "Ionia"
 	},
 	{
 		"id": 303506,
-		"qte": 5,
 		"label": "Ixtal"
 	},
 	{
 		"id": 303507,
-		"qte": 5,
 		"label": "Noxus"
 	},
 	{
 		"id": 303508,
-		"qte": 5,
 		"label": "Piltover"
 	},
 	{
 		"id": 303509,
-		"qte": 5,
 		"label": "Shadow Isles"
 	},
 	{
 		"id": 303510,
-		"qte": 5,
 		"label": "Shurima"
 	},
 	{
 		"id": 303511,
-		"qte": 5,
 		"label": "Targon"
 	},
 	{
 		"id": 303512,
-		"qte": 5,
 		"label": "Void"
 	},
 	{
 		"id": 303513,
-		"qte": 5,
 		"label": "Zaun"
 	}
 ]
