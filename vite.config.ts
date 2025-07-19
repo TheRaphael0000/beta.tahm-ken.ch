@@ -10,7 +10,15 @@ export default defineConfig({
                 target: 'http://localhost',
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, '')
-            }
+            },
+
+            // You can avoid using the back on you computer if you
+            // use the production back-end by using the proxy below
+            // please dont push this :)
+            // '/api': {
+            //     target: 'https://tahm-ken.ch',
+            //     changeOrigin: true,
+            // }
         }
     }
 });
