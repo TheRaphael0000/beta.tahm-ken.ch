@@ -215,6 +215,7 @@
 					<th class="px-2"></th>
 					<th class="px-2 text-right">&nbsp;&nbsp;#</th>
 					<th class="px-2 text-left">Challenges</th>
+					<th class="px-2 text-left">Label</th>
 					<th class="px-2"></th>
 					<th class="px-2 text-left">Selection</th>
 				</tr>
@@ -229,6 +230,7 @@
 						<td class="px-2"></td>
 						<td class="px-2"></td>
 						<th class="px-2 text-left">{main.name}</th>
+						<td class="px-2"></td>
 						<td class="px-2 text-left">
 							<Tooltip text={helpText}>
 								{main.description}
@@ -284,6 +286,11 @@
 								<td class="px-2 text-left">
 									<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer text-nowrap">
 										{challenge.name}
+									</label>
+								</td>
+								<td class="px-2 text-left">
+									<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer text-nowrap">
+										{challenge.label}
 									</label>
 								</td>
 								<td class="px-2 text-left">
