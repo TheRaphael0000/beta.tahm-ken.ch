@@ -32,6 +32,8 @@ python update_challenges.py
 
 #### Datadragon / Discord
 
+This will download files from datadragon and discord API to initalized cached data
+
 ```
 node cache/cache.js
 ```
