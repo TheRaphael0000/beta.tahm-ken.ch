@@ -45,6 +45,8 @@ npm i # install dependencies
 npm run dev # run dev env
 ```
 
+Follow instructions in the console.
+
 ## Build
 
 Please check that the build pass before pushing
