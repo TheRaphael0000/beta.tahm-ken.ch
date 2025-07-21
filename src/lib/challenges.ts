@@ -21,11 +21,38 @@ export const championsMapKey = new Map(
 	Object.entries(champions_json.data).map((c) => [c[1].key, c[1]])
 );
 
+export const championsByTags = new Map<string, number[]>();
+for (let champion of champions) {
+	for (let tag of champion.tags) {
+		if (!championsByTags.has(tag)) championsByTags.set(tag, []);
+		championsByTags.get(tag)?.push(Number(champion.key));
+	}
+}
+
 // Put challenges into a flat array with and apply labels
 export const challenges = Object.values(challenges_json).map((challenge) => ({
 	...challenge,
-	label: challenge_labels.find((l) => l.id == challenge.id)?.label || ''
+	label: challenge_labels.find((l) => l.id == challenge.id)?.label || '',
+	internalId: `${challenge.id}`
 }));
+
+const varietyIsOverrated = challenges.find((c) => c.id == 303408);
+
+for (let tag of championsByTags.keys()) {
+	const clone = structuredClone(varietyIsOverrated);
+	if (!clone) continue;
+	clone.internalId = `${clone.id}_${tag}`;
+	clone.availableIds = championsByTags.get(tag) || [];
+	clone.label = tag;
+	challenges.push(clone);
+}
+
+challenges.splice(
+	challenges.findIndex((c) => c.id == 303408),
+	1
+);
+
+challenges.sort((c1, c2) => c1.id - c2.id);
 
 export const challengesGroups = [
 	{

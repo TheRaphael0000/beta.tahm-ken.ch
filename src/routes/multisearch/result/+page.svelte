@@ -113,8 +113,9 @@
 			{@const challenges = summoner.challenges}
 			{@const globalLevel = challenges.totalPoints.level.toLocaleLowerCase()}
 			{@const icon = summoner.summoner.profileIconId}
-			{@const championMasteries = summoner.champion_masteries
-				.toSorted((c: any) => -c.championLevel)}
+			{@const championMasteries = summoner.champion_masteries.toSorted(
+				(c: any) => -c.championLevel
+			)}
 
 			<tr>
 				<td>
@@ -149,7 +150,7 @@
 							(c: any) => c.challengeId == challenge.id
 						)}
 						{@const challengeLevel = summonerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
-						<div>
+						<div class="flex flex-col">
 							<div class="relative">
 								<Tooltip>
 									{#snippet text()}
@@ -162,46 +163,40 @@
 											alt={challengeLevel}
 										/>
 									{/snippet}
-									<div class="text-nowrap">{challenge.name}</div>
+									<div class="text-nowrap">{challenge.name}: {challenge.label}</div>
 								</Tooltip>
 							</div>
+
+							{#if showMasteries}
+								{#each Array(3) as a, i}
+									{@const hasChamps = challenge.availableIds.length > 0}
+									{@const championMasteriesChallenge = championMasteries.filter((c: any) =>
+										hasChamps
+											? challenge.availableIds.includes(c.championId)
+											: championsMapKey.keys()
+									)}
+									{@const masteries = championMasteriesChallenge.at(i)}
+									{@const championId = masteries?.championId?.toString()}
+									{@const champion = championsMapKey?.get(championId)}
+									{@const level = masteries?.championLevel}
+									<div class="relative h-9 max-h-9 w-9 max-w-9 text-center">
+										{#if champion}
+											<img src={`/img/cache/${champion?.image?.full}`} alt={champion?.name} />
+											<div
+												class={[
+													'absolute right-0 bottom-0 rounded-tl-[50%] bg-black/50 px-1 pt-0.5 text-xs font-bold'
+												]}
+											>
+												{level}
+											</div>
+										{/if}
+									</div>
+								{/each}
+							{/if}
 						</div>
 					{/each}
 				</td>
 			</tr>
-
-			{#if showMasteries}
-				{#each Array(3) as a, i}
-					<tr>
-						<td colspan="4"></td>
-
-						<td class="flex flex-row flex-wrap">
-							{#each ordredChallenges as challenge}
-								{@const hasChamps = challenge.availableIds.length > 0}
-								{@const championMasteriesChallenge = championMasteries.filter((c: any) =>
-									hasChamps ? challenge.availableIds.includes(c.championId) : championsMapKey.keys()
-								)}
-								{@const masteries = championMasteriesChallenge.at(i)}
-								{@const championId = masteries?.championId?.toString()}
-								{@const champion = championsMapKey?.get(championId)}
-								{@const level = masteries?.championLevel}
-								<div class="relative h-9 max-h-9 w-9 max-w-9 text-center">
-									{#if champion}
-										<img src={`/img/cache/${champion?.image?.full}`} alt={champion?.name} />
-										<div
-											class={[
-												'absolute right-0 bottom-0 rounded-tl-[50%] bg-black/50 px-1 pt-0.5 text-xs font-bold'
-											]}
-										>
-											{level}
-										</div>
-									{/if}
-								</div>
-							{/each}
-						</td>
-					</tr>
-				{/each}
-			{/if}
 		{/each}
 		<tr class="h-3 border-b-1"> </tr>
 		<tr>

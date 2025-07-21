@@ -268,7 +268,7 @@
 								<td class="px-2 pt-0.5 text-right"
 									><input
 										type="checkbox"
-										id={`challenge_cb_${challenge.id}`}
+										id={`challenge_cb_${challenge.internalId}`}
 										class="cursor-pointer"
 										bind:group={challengesSelected}
 										value={challenge}
@@ -276,7 +276,7 @@
 								>
 								<td class="px-2 text-right">
 									<label
-										for={`challenge_cb_${challenge.id}`}
+										for={`challenge_cb_${challenge.internalId}`}
 										class="cursor-pointer"
 										style="width:30px; display inline-block;"
 									>
@@ -284,12 +284,18 @@
 									</label>
 								</td>
 								<td class="px-2 text-left">
-									<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer text-nowrap">
+									<label
+										for={`challenge_cb_${challenge.internalId}`}
+										class="cursor-pointer text-nowrap"
+									>
 										{challenge.name}
 									</label>
 								</td>
 								<td class="px-2 text-left">
-									<label for={`challenge_cb_${challenge.id}`} class="cursor-pointer text-nowrap">
+									<label
+										for={`challenge_cb_${challenge.internalId}`}
+										class="cursor-pointer text-nowrap"
+									>
 										{challenge.label}
 									</label>
 								</td>
