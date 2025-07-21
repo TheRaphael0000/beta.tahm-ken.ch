@@ -87,10 +87,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Multisearch result</title>
-</svelte:head>
-
 <p><i>Hover to see the challenge name</i></p>
 
 <p class="text-right">

@@ -6,7 +6,8 @@
 </script>
 
 <svelte:head>
-	<title>Community</title>
+	<title>Community - Tahm-Ken.ch</title>
+	<meta name="description" content="League of Legends challenges communities affiliated with Tahm-Ken.ch" />
 </svelte:head>
 
 <Article>

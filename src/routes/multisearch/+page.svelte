@@ -72,7 +72,8 @@
 </script>
 
 <svelte:head>
-	<title>Multisearch</title>
+	<title>Multisearch - Tahm-Ken.ch</title>
+	<meta name="description" content="Multisearch for Harmony and Globtrotter challenges in League of Legends" />
 </svelte:head>
 
 <p>

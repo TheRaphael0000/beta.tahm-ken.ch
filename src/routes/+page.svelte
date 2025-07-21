@@ -2,6 +2,14 @@
 	import { H1, H2, Article, Link } from '$lib/components';
 </script>
 
+<svelte:head>
+	<title>Tahm-Ken.ch</title>
+	<meta
+		name="description"
+		content="Tools to help you complete Harmony and Globetrotter challenges in League of Legends!"
+	/>
+</svelte:head>
+
 <Article>
 	<H1>Welcome to Tahm-Ken.ch</H1>
 
@@ -46,9 +54,10 @@
 
 	<H2>Support Us</H2>
 	<p>
-		Tahm-Ken.ch is <b>ad-free</b> and we don't collect any personal data, only page visit
-		statistics (using <Link href="https://github.com/umami-software/umami">Umami</Link>). If you'd like to support our work, you can <b>donate</b> here. [<Link
-			href="https://ko-fi.com/theraphael0000">Donation page</Link
+		Tahm-Ken.ch is <b>ad-free</b> and we don't collect any personal data, only page visit statistics
+		(using <Link href="https://github.com/umami-software/umami">Umami</Link>). If you'd like to
+		support our work, you can <b>donate</b> here. [<Link href="https://ko-fi.com/theraphael0000"
+			>Donation page</Link
 		>]
 	</p>
 	<p>

@@ -152,7 +152,8 @@
 </script>
 
 <svelte:head>
-	<title>Team Builder</title>
+	<title>Team Builder - Tahm-Ken.ch</title>
+	<meta name="description" content="Team builder for Harmony and Globtrotter challenges in League of Legends" />
 </svelte:head>
 
 {#snippet helpText()}

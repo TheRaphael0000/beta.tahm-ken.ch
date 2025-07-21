@@ -73,10 +73,6 @@
 	setInterval(updateQuote, 10000);
 </script>
 
-<svelte:head>
-	<title>Team Builder</title>
-</svelte:head>
-
 <header>
 	<div
 		class="bg_img"

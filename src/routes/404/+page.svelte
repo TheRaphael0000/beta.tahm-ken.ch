@@ -5,7 +5,8 @@
 </script>
 
 <svelte:head>
-    <title>404</title>
+    <title>404 - Tahm-Ken.ch</title>
+	<meta name="description" content="404 error page for tahm-ken.ch" />
 </svelte:head>
 
 <Article>
