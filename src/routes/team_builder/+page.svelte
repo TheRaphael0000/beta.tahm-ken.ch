@@ -432,7 +432,7 @@
 	.team_builder {
 		display: grid;
 		gap: 5px;
-		grid-template-columns: 652px auto;
+		grid-template-columns: 678px auto;
 		grid-template-areas: 'col1 col2';
 	}
 
