@@ -5,8 +5,11 @@ on:
     tags:
       - 'v*.*.*'
 
+permissions:
+  contents: write
+
 jobs:
-  build-website:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
