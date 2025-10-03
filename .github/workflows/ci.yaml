@@ -21,7 +21,7 @@ jobs:
 
       - name: Zip source code
         run: |
-          zip -r build.zip ./build -x
+          zip -r build.zip ./build
 
       - name: Create Release
         uses: actions/create-release@v1
