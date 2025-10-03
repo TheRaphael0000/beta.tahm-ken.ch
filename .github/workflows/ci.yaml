@@ -9,10 +9,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Zip source code
-        run: |
-          zip -r source-code.zip . -x "*.git/*"
-
       - name: Build the image using docker
         run: docker compose up --build
 
