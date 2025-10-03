@@ -8,15 +8,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-          fetch-tags: true
-
-      - name: Git Version
-        id: version
-        run: |
-          VERSION=$(git describe --tags --long)
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Zip source code
         run: |
@@ -25,14 +16,8 @@ jobs:
       - name: Build the image using docker
         run: docker compose up --build
 
-      - name: Zip Build
-        run: |
-          zip -r build.zip ./build
-
-      - name: Upload artifacts
+      - name: Upload artifacts - Build
         uses: actions/upload-artifact@v4
         with:
           name: build
-          path: |
-            ./source-code.zip
-            ./build.zip
+          path: ./build
