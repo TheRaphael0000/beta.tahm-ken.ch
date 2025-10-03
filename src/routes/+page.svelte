@@ -19,7 +19,8 @@
 	</p>
 
 	<H2>Our Tools</H2>
-	<p>We offer three main tools to assist you:</p>
+	<!-- <p>We offer three main tools to assist you:</p> -->
+	<p>We offer two main tools to assist you:</p>
 	<ul class="ml-8 list-disc">
 		<li>
 			<Link href="/multisearch">Multisearch</Link>
@@ -31,11 +32,11 @@
 			<br />
 			Discover which champions you should pick to complete specific challenges.
 		</li>
-		<li>
+		<!-- <li>
 			<Link href="/compositions">Compositions</Link>
 			<br />
 			Access pre-computed team compositions optimized for maximizing challenge completion.
-		</li>
+		</li> -->
 	</ul>
 
 	<H2>Community</H2>
