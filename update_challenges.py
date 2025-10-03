@@ -35,5 +35,7 @@ for challenge_k, challenge in list(challenges.items()):
     for k, v in list(challenge.items()):
         if k not in to_keep:
             del challenge[k]
+    # sort to have a clear git diff, since riot randomly change the order each update
+    challenge["availableIds"] = sorted(challenge["availableIds"])
 
 json.dump(challenges, open("src/data/challenges.json", "w"), indent=4)
