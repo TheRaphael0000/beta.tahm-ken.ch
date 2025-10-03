@@ -1,6 +1,10 @@
-name: build website
+name: build
 
-on: push
+on:
+  push:
+    branches:
+      - main
+      - develop
 
 jobs:
   build-website:

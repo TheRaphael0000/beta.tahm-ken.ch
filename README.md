@@ -55,3 +55,9 @@ Please check that the build pass before pushing
 npm run build # build
 npm run preview # test the build
 ```
+
+Or with Docker
+
+```bash
+docker compose up --build
+```
