@@ -12,6 +12,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
+      - name: Git Version
+        id: version
+        run: |
+          VERSION=$(git describe --tags --long)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
       - name: Zip source code
         run: |
           zip -r source-code.zip . -x "*.git/*"
@@ -19,19 +25,37 @@ jobs:
       - name: Build the image using docker
         run: docker compose up --build
 
-      - name: Zip source code
+      - name: Zip Build
         run: |
           zip -r build.zip ./build
 
       - name: Create Release
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          release_name: Release ${{ steps.version.outputs.short_sha }}
           draft: false
           prerelease: false
-          files: |
-            build.zip
-            source-code.zip
+
+      - name: Upload Source Code
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./source-code.zip
+          asset_name: source-code-${{ steps.version.outputs.short_sha }}.zip
+          asset_content_type: application/zip
+
+      - name: Upload Build
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build.zip
+          asset_name: build-${{ steps.version.outputs.short_sha }}.zip
+          asset_content_type: application/zip
