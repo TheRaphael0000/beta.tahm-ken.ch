@@ -19,7 +19,7 @@ jobs:
         run: docker compose up --build
 
       - name: Zip Build
-        run: zip build.zip build -r
+        run: (cd build && zip -r ../build.zip .)
 
       - name: Create Release
         id: create_release
@@ -39,5 +39,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./build.zip
-          asset_name: build-${{ github.ref_name }}.zip
+          asset_name: tahm-ken.ch-${{ github.ref_name }}.zip
           asset_content_type: application/zip
