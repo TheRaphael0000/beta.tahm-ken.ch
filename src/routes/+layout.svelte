@@ -31,10 +31,10 @@
 			href: '/team_builder',
 			text: 'Team Builder'
 		},
-		{
-			href: '/compositions',
-			text: 'Compositions'
-		},
+		// {
+		// 	href: '/compositions',
+		// 	text: 'Compositions'
+		// },
 		{
 			href: '/community',
 			text: 'Community'
