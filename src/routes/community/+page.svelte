@@ -26,8 +26,6 @@
 	<DiscordCommunity community={discord_invites.cKGS6ASyuZ} />
 	<!-- Achievement Hunting -->
 	<DiscordCommunity community={discord_invites.yapEVysv3b} />
-	<!-- High Mastery -->
-	<DiscordCommunity community={discord_invites.zASN5E6RCv} />
 
 	<!-- Tahm-Ken.ch -->
 	<DiscordCommunity community={discord_invites.aHs3uDraNU} />
