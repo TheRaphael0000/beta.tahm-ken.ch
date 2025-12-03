@@ -39,11 +39,19 @@
 	});
 
 	onMount(async () => {
-		donatorsStr = donators
-			.sort(() => 0.5 - Math.random())
+		donatorsStr = shuffleArray(donators)
 			.map((d) => `${d} joined the lobby`)
 			.join('\n');
 	});
+
+	function shuffleArray(array: string[]) {
+		// The Fisher-Yates Shuffle
+		for (let i = array.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[array[i], array[j]] = [array[j], array[i]];
+		}
+		return array;
+	}
 
 	function search() {
 		let url = `/multisearch/result?region=${region}&summoners=${summonerClean.join(',')}`;
@@ -73,7 +81,10 @@
 
 <svelte:head>
 	<title>Multisearch - Tahm-Ken.ch</title>
-	<meta name="description" content="Multisearch for Harmony and Globtrotter challenges in League of Legends" />
+	<meta
+		name="description"
+		content="Multisearch for Harmony and Globtrotter challenges in League of Legends"
+	/>
 </svelte:head>
 
 <p>
@@ -93,7 +104,7 @@
 	<p>Summoners</p>
 	<TextArea
 		class="block w-full"
-		rows="8"
+		rows="9"
 		bind:value={summoners}
 		placeholder={donatorsStr}
 		onpaste={paste}
