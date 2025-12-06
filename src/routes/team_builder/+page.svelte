@@ -432,7 +432,7 @@
 							<div>
 								Lvl.{numberFormat.format(level)} ({numberFormat.format(
 									playerChampion.championPoints
-								)}pt)
+								)} pts)
 							</div>
 						{/if}
 					</div>
