@@ -28,6 +28,8 @@
 	let challengesTotal: number = $state(0);
 	let showCompleted: boolean = $state(true);
 
+	const numberFormat = new Intl.NumberFormat();
+
 	const championsKeyForSelectedChallenges = $derived(
 		getChampions(challengesSelected).map((c) => c.key)
 	);
@@ -153,7 +155,10 @@
 
 <svelte:head>
 	<title>Team Builder - Tahm-Ken.ch</title>
-	<meta name="description" content="Team builder for Harmony and Globtrotter challenges in League of Legends" />
+	<meta
+		name="description"
+		content="Team builder for Harmony and Globtrotter challenges in League of Legends"
+	/>
 </svelte:head>
 
 {#snippet helpText()}
@@ -421,7 +426,16 @@
 							</div>
 						</button>
 					{/snippet}
-					{champion.name}
+					<div>
+						<div>{champion.name}</div>
+						{#if playerChampion}
+							<div>
+								Lvl.{numberFormat.format(level)} ({numberFormat.format(
+									playerChampion.championPoints
+								)}pt)
+							</div>
+						{/if}
+					</div>
 				</Tooltip>
 			{/each}
 		</div>
