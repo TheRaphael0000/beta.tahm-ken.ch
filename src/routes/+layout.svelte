@@ -38,10 +38,6 @@
 		{
 			href: '/community',
 			text: 'Community'
-		},
-		{
-			href: 'https://old.tahm-ken.ch',
-			text: 'Old website'
 		}
 	];
 
