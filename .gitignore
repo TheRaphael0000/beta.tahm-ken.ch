@@ -26,3 +26,4 @@ vite.config.ts.timestamp-*
 __pycache__
 
 datadragon
+releases
