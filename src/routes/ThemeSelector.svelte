@@ -2,8 +2,24 @@
 	import { Select, Option } from '$lib/components';
 	import Button from '$lib/components/Button.svelte';
 
+	const valid_img = [
+		["TahmKench_0.jpg", "Original"],
+		["TahmKench_1.jpg", "Master Chef"],
+		["TahmKench_2.jpg", "Urf Kench"],
+		["TahmKench_3.jpg", "Coin Emperor"],
+		["TahmKench_11.jpg", "Arcana"],
+		["TahmKench_20.jpg", "High Noon"],
+		["TahmKench_30.jpg", "Shan Hai Scrolls"],
+	]
+
 	let isVisible: boolean = $state(false);
 	let { background = $bindable() } = $props();
+
+	// ensure that the background is a valid one
+	if(!valid_img.some(f => f[0] == background))
+	{
+		background = valid_img[0][0];
+	}
 </script>
 
 <div>
@@ -23,13 +39,9 @@
 				<label>
 					Background:
 					<Select bind:value={background}>
-						<Option value="TahmKench_00.jpg">Original</Option>
-						<Option value="TahmKench_01.jpg">Master Chef</Option>
-						<Option value="TahmKench_02.jpg">Urf Kench</Option>
-						<Option value="TahmKench_03.jpg">Coin Emperor</Option>
-						<Option value="TahmKench_11.jpg">Arcana</Option>
-						<Option value="TahmKench_20.jpg">High Noon</Option>
-						<Option value="TahmKench_30.jpg">Shan Hai Scrolls</Option>
+						{#each valid_img as [img, name]}
+							<Option value={img}>{name}</Option>
+						{/each}
 					</Select>
 				</label>
 

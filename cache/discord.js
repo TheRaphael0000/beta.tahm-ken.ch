@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs';
+import { writeFileSync, mkdirSync } from 'fs';
 
 const communities = ['aHs3uDraNU', 'zASN5E6RCv', 'FJXAvqxw6T', 'yapEVysv3b', 'cKGS6ASyuZ'];
 
@@ -21,5 +21,7 @@ export default async function main() {
 		cache.set(invite_id, community);
 	}
 	const communities_string = JSON.stringify(Object.fromEntries(cache), null, 2);
+
+	try { mkdirSync("src/data/cache/", { recursive: true }) } catch { }
 	writeFileSync('src/data/cache/discord.cache.json', communities_string);
 }

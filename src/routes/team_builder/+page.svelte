@@ -190,7 +190,7 @@
 			{#if playerData}
 				<img
 					class="h-10 max-h-10 w-10 max-w-10"
-					src={`https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon${icon}.png`}
+					src={`/img/cache/datadragon/profileicon/${icon}.png`}
 					alt={'icon' + icon}
 				/>
 				<img
@@ -231,7 +231,7 @@
 					{@const main = challengeGroup.main}
 					{@const mainPlayerChallenge = playerChallengesMap?.get(main?.id)}
 					{@const mainPlayerChallengeLevel =
-						mainPlayerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
+						mainPlayerChallenge?.level ?? 'IRON'}
 					<tr>
 						<td class="px-2"></td>
 						<td class="px-2"></td>
@@ -247,7 +247,7 @@
 							<td>
 								<img
 									class="h-6 max-h-6 w-6 max-w-6"
-									src={`https://raw.communitydragon.org/latest/game/assets/challenges/config/${main.id}/tokens/${mainPlayerChallengeLevel}.png`}
+									src={`/img/cache/datadragon/challenges-images/${main.id}-${mainPlayerChallengeLevel}.png`}
 									alt={mainPlayerChallengeLevel}
 								/>
 							</td>
@@ -264,7 +264,7 @@
 							0
 						)}
 						{@const playerChallenge = playerChallengesMap?.get(challenge?.id)}
-						{@const playerChallengeLevel = playerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
+						{@const playerChallengeLevel = playerChallenge?.level ?? 'IRON'}
 						{@const playerChallengeValue = playerChallenge?.value ?? 0}
 						{@const threshold = challenge.thresholds.MASTER.value}
 						{@const showRow = showCompleted || playerChallengeValue < threshold}
@@ -332,7 +332,7 @@
 									<td>
 										<img
 											class="h-6 max-h-6 w-6 max-w-6"
-											src={`https://raw.communitydragon.org/latest/game/assets/challenges/config/${challenge.id}/tokens/${playerChallengeLevel}.png`}
+											src={`/img/cache/datadragon/challenges-images/${challenge.id}-${playerChallengeLevel}.png`}
 											alt={playerChallengeLevel}
 										/>
 									</td>
@@ -409,7 +409,7 @@
 							class:opacity-35={!championsKeyForSelectedChallenges.includes(champion.key) &&
 								championsKeyForSelectedChallenges.length != 0}
 						>
-							<img src={`/img/cache/${champion.image.full}`} alt={champion.name} class="w-16" />
+							<img src={`/img/cache/datadragon/champion/${champion.image.full}`} alt={champion.name} class="w-16" />
 							<div
 								class={[
 									'absolute right-0 bottom-0 rounded-tl-[50%] px-2 pt-0.5 text-sm font-bold',

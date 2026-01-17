@@ -1,6 +1,6 @@
 import { chain, intersectSets } from './utils';
 
-import champions_json from 'data/cache/champion.cache.json';
+import champions_json from 'data/cache/datadragon/champion.json';
 import challenges_json from 'data/challenges.json';
 import challenge_labels from 'data/challenge_labels.json';
 

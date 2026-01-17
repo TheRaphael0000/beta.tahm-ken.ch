@@ -1,53 +1,73 @@
-import { writeFileSync, readFileSync } from 'fs';
+import { readFileSync, existsSync, mkdirSync, copyFileSync, rmSync, cpSync } from 'fs';
+import { x } from 'tar';
+import { pipeline } from 'stream/promises';
+import { createWriteStream, symlinkSync, unlinkSync } from 'fs';
+import { Readable } from 'stream';
+import { execPath } from 'process';
+
 
 const endpoint = 'https://ddragon.leagueoflegends.com';
-const dataFolder = 'src/data/cache/';
-const staticFolder = 'static/img/cache/';
 
-async function queryJson(pathname, filename) {
+async function queryFile(pathname, filename) {
 	const url = `${endpoint}/${pathname}`;
 	console.log(url);
 	const response = await fetch(url);
-	const json = await response.json();
-	writeFileSync(`${dataFolder}${filename}`, JSON.stringify(json, null, 2));
-	return json;
+	const fileStream = createWriteStream(filename)
+
+	await pipeline(
+		Readable.fromWeb(response.body),
+		fileStream
+	);
 }
 
-async function queryBlob(pathname, filename) {
-	const url = `${endpoint}/${pathname}`;
+async function queryTar(pathname, foldername) {
+	const url = `${endpoint}/${pathname}`
 	console.log(url);
-	const response = await fetch(url);
-	const blob = await response.blob();
-	const arrayBuffer = await blob.arrayBuffer();
-	const buffer = Buffer.from(arrayBuffer);
-	writeFileSync(`${staticFolder}${filename}`, buffer);
+	const response = await fetch(url)
+	if (!response.ok) throw new Error(`Unexpected response ${response.statusText}`)
+	mkdirSync(foldername, { recursive: true })
+	await pipeline(
+		Readable.fromWeb(response.body),
+		x({ cwd: foldername })
+	);
 }
 
 export default async function main() {
 	console.log('Caching datadragon...');
 
-	const versionFilename = 'versions.cache.json';
-	let currentVersions = [''];
-	try {
-		currentVersions = JSON.parse(readFileSync(`${dataFolder}${versionFilename}`));
-	} catch (e) {}
-	const versions = await queryJson('api/versions.json', versionFilename);
+	try { mkdirSync("datadragon", { recursive: true }) } catch { }
+
+	const versionPath = `datadragon/versions.json`
+	await queryFile('api/versions.json', versionPath);
+	const versions = JSON.parse(readFileSync(versionPath));
+
 	const version = versions.at(0);
-
 	console.log(`riot version: ${version}`);
-	console.log(`current downloaded version: ${currentVersions.at(0)}`);
-	
-	if (version == currentVersions.at(0)) return;
 
-	const champions = await queryJson(
-		`cdn/${version}/data/en_US/champion.json`,
-		'champion.cache.json'
-	);
+	const dragontailPath = `datadragon/dragontail-${version}`
 
-	for (const [id, champion] of Object.entries(champions['data'])) {
-		await queryBlob(
-			`cdn/${version}/img/champion/${champion['image']['full']}`,
-			champion['image']['full']
-		);
+	if(existsSync(dragontailPath)) {
+		console.log(`${dragontailPath} already on disk!`)
 	}
+	else {
+		await queryTar(`cdn/dragontail-${version}.tgz`, dragontailPath);
+	}
+
+	// clean
+	try { rmSync(`src/data/cache/datadragon`, {recursive:true}) } catch { }
+	try { rmSync(`static/img/cache/datadragon`, {recursive:true}) } catch { }
+
+	mkdirSync(`src/data/cache/datadragon`, {recursive:true})
+	mkdirSync(`static/img/cache/datadragon`, {recursive:true})
+
+	// copies
+
+	/// data
+	cpSync(`${dragontailPath}/${version}/data/en_US/champion.json`, `src/data/cache/datadragon/champion.json`);
+
+	/// static
+	cpSync(`${dragontailPath}/${version}/img/champion`, `static/img/cache/datadragon/champion`, {recursive:true});
+	cpSync(`${dragontailPath}/${version}/img/profileicon`, `static/img/cache/datadragon/profileicon`, {recursive:true});
+	cpSync(`${dragontailPath}/img/challenges-images`, `static/img/cache/datadragon/challenges-images`, {recursive:true});
+	cpSync(`${dragontailPath}/img/champion/splash`, `static/img/cache/datadragon/splash`, {recursive:true});
 }

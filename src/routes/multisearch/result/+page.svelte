@@ -117,7 +117,7 @@
 				<td>
 					<img
 						class="h-10 max-h-10 w-10 max-w-10"
-						src={`https://raw.communitydragon.org/latest/game/assets/ux/summonericons/profileicon${icon}.png`}
+						src={`/img/cache/datadragon/profileicon/${icon}.png`}
 						alt={'icon' + icon}
 					/>
 				</td>
@@ -145,7 +145,7 @@
 						{@const summonerChallenge = allChallenges.find(
 							(c: any) => c.challengeId == challenge.id
 						)}
-						{@const challengeLevel = summonerChallenge?.level?.toLocaleLowerCase() ?? 'iron'}
+						{@const challengeLevel = summonerChallenge?.level ?? 'IRON'}
 						<div class="flex flex-col">
 							<div class="relative">
 								<Tooltip>
@@ -155,7 +155,7 @@
 										>
 										<img
 											class="h-9 max-h-9 w-9 max-w-9"
-											src={`https://raw.communitydragon.org/latest/game/assets/challenges/config/${challenge.id}/tokens/${challengeLevel}.png`}
+											src={`/img/cache/datadragon/challenges-images/${challenge.id}-${challengeLevel}.png`}
 											alt={challengeLevel}
 										/>
 									{/snippet}
