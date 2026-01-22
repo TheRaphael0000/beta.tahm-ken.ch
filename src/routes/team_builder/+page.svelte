@@ -315,7 +315,7 @@
 										{#each championsSelectedChallenge as championSelectedChallenge}
 											<div class="mx-0.5 h-[20px] w-[20px]">
 												<img
-													src={`/img/cache/${championSelectedChallenge?.image.full}`}
+													src={`/img/cache/datadragon/champion/${championSelectedChallenge?.image.full}`}
 													alt={championSelectedChallenge?.name}
 												/>
 											</div>
@@ -380,7 +380,7 @@
 								<div class="v-full h-full rounded-full bg-white/50"></div>
 							{:else}
 								<button class="cursor-pointer" onclick={(e) => championClick(e, champion.id)}>
-									<img src={`/img/cache/${champion?.image.full}`} alt={champion.name} />
+									<img src={`/img/cache/datadragon/champion/${champion?.image.full}`} alt={champion.name} />
 								</button>
 							{/if}
 						</div>
