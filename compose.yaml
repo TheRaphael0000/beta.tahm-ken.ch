@@ -2,4 +2,6 @@ services:
   tahm-ken.ch:
     build: .
     volumes:
+      - ./node_modules:/app/node_modules
+      - ./datadragon:/app/datadragon
       - ./build:/build
