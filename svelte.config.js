@@ -6,7 +6,7 @@ export default {
 			pages: 'build',
 			assets: 'build',
 			fallback: undefined,
-			precompress: false,
+			precompress: true,
 			strict: true
 		}),
 		alias: {
