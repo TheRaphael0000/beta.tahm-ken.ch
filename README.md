@@ -7,28 +7,12 @@ It uses Javascript with Svelte on Node.
 
 First you either need to choose between using the production backend or running your own backend locally.
 
-### Using production backend
+### Back-end
 
-In `vite.config.ts` comment the current proxy and use the one in comment.
-
-That's it!
-
-### Using local back-end
-
-Please follow the readme at https://github.com/TheRaphael0000/api.tahm-ken.ch/
+The default behaviour of the front-end in dev is to use the production back-end.
+If you want to use the dev back-end please follow this readme: https://github.com/TheRaphael0000/api.tahm-ken.ch/
 
 ### Update caches
-
-
-#### LCU
-
-Run this python script with your League of Legends client open. This will ask the LCU for the latest challenges every profile specific data will be discarded.
-
-You can't run this in the WSL. You must run this in Windows directly so it can communicate with League.
-
-```python
-python update_challenges.py
-```
 
 #### Datadragon / Discord
 
@@ -36,6 +20,18 @@ This will download files from datadragon and discord API to initalized cached da
 
 ```
 node cache/cache.js
+```
+
+#### Update LCU cache
+
+The files created by this script are commited to the repository, so you don't need to run this script if you want to run the app with the current challenges data.
+
+Run this python script with your League of Legends client open. This will ask the LCU for the latest challenges every profile specific data will be discarded.
+
+You can't run this in the WSL. You must run this in Windows directly so it can communicate with League.
+
+```python
+python update_challenges.py
 ```
 
 ### Run the Dev server
@@ -56,7 +52,7 @@ npm run build # build
 npm run preview # test the build
 ```
 
-Or with Docker
+Or with Docker (used by the CI/CD)
 
 ```bash
 docker compose up --build
