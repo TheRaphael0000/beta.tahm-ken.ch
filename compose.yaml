@@ -1,6 +1,8 @@
 services:
   tahm-ken.ch:
     build: .
+    environment:
+      - VITE_BUILD_VERSION=${VITE_BUILD_VERSION}
     volumes:
       - ./node_modules:/app/node_modules
       - ./datadragon:/app/datadragon

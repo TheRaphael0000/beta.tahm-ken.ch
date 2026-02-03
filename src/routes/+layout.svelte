@@ -1,10 +1,13 @@
 <script lang="ts">
 	import '../app.css';
 	import quotes from 'data/quotes.json';
+	import manifest_json from 'data/cache/datadragon/manifest.json';
+	import lcu_version from 'data/lcu/version.json';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import ThemeSelector from './ThemeSelector.svelte';
 	import { browser } from '$app/environment';
+	const version = import.meta.env.VITE_BUILD_VERSION;
 
 	let currentPath = $derived(page.url.pathname);
 	let background: string = $state(
@@ -112,6 +115,9 @@
 	</div>
 
 	<div class="text-sm text-gray-500">
+		<div>
+			Build {version} / DD {manifest_json.dd} / LCU {lcu_version}
+		</div>
 		<div>
 			Tahm-Ken.ch isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot
 			Games or anyone officially involved in producing or managing Riot Games properties.

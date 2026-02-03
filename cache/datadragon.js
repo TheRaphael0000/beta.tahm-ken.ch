@@ -10,7 +10,7 @@ const endpoint = 'https://ddragon.leagueoflegends.com';
 
 async function queryFile(pathname, filename) {
 	const url = `${endpoint}/${pathname}`;
-	console.log(url);
+	console.log(`- query: ${url}`);
 	const response = await fetch(url);
 	const fileStream = createWriteStream(filename)
 
@@ -22,7 +22,7 @@ async function queryFile(pathname, filename) {
 
 async function queryTar(pathname, foldername) {
 	const url = `${endpoint}/${pathname}`
-	console.log(url);
+	console.log(`- query: ${url}`);
 	const response = await fetch(url)
 	if (!response.ok) throw new Error(`Unexpected response ${response.statusText}`)
 	mkdirSync(foldername, { recursive: true })
@@ -42,7 +42,7 @@ export default async function main() {
 	const versions = JSON.parse(readFileSync(versionPath));
 
 	const version = versions.at(0);
-	console.log(`riot version: ${version}`);
+	console.log(`latest version: ${version}`);
 
 	const dragontailPath = `datadragon/dragontail-${version}`
 
@@ -50,20 +50,25 @@ export default async function main() {
 		console.log(`${dragontailPath} already on disk!`)
 	}
 	else {
+		
+		console.log(`downloading datadragon version ${version}`);
 		await queryTar(`cdn/dragontail-${version}.tgz`, dragontailPath);
 	}
 
 	// clean
+	console.log(`clearing datadragon files`);
 	try { rmSync(`src/data/cache/datadragon`, {recursive:true}) } catch { }
 	try { rmSync(`static/img/cache/datadragon`, {recursive:true}) } catch { }
 
 	mkdirSync(`src/data/cache/datadragon`, {recursive:true})
 	mkdirSync(`static/img/cache/datadragon`, {recursive:true})
-
+	
 	// copies
+	console.log(`copying datadragon files`);
 
 	/// data
 	cpSync(`${dragontailPath}/${version}/data/en_US/champion.json`, `src/data/cache/datadragon/champion.json`);
+	cpSync(`${dragontailPath}/${version}/manifest.json`, `src/data/cache/datadragon/manifest.json`);
 
 	/// static
 	cpSync(`${dragontailPath}/${version}/img/champion`, `static/img/cache/datadragon/champion`, {recursive:true});

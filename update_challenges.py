@@ -1,5 +1,5 @@
 from pathlib import Path
-from requests import get, auth
+from requests import get, auth, post
 import json
 
 game_path = "C:/Riot Games/League of Legends/"
@@ -31,11 +31,15 @@ for challenge_k, challenge in list(challenges.items()):
     if challenge["id"] not in to_keep_id and challenge["parentId"] not in to_keep_id:
         del challenges[challenge_k]
         continue
-    print(challenge["id"])
     for k, v in list(challenge.items()):
         if k not in to_keep:
             del challenge[k]
     # sort to have a clear git diff, since riot randomly change the order each update
+    print(challenge["id"], len(challenge["availableIds"]))
     challenge["availableIds"] = sorted(challenge["availableIds"])
 
-json.dump(challenges, open("src/data/challenges.json", "w"), indent=4)
+json.dump(challenges, open("src/data/lcu/challenges.json", "w"), indent=4)
+
+version = query(f"/telemetry/v1/common-data")["common.application_version"]
+print("version", version)
+json.dump(version, open("src/data/lcu/version.json", "w"), indent=4)

@@ -56,4 +56,7 @@ Or with Docker (used by the CI/CD)
 
 ```bash
 docker compose up --build
+
+# build with version number
+VITE_BUILD_VERSION=$(git describe --tags | tr -d '\n') docker compose up --build
 ```
